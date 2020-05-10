@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 /*
  *  JSO-CSS; JavaScript Object Cascading Style Sheets
  *  Copyright (C) 2020 Luke Zhang
@@ -20,15 +18,3 @@
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-const program = require("commander")
-
-const inFile = process.argv[2]
-const outFile = process.argv[3]
-
-const args = {
-    in: process.argv[2],
-    out: process.argv[3],
-    path: process.argv[1]
-}
-
-console.log(args)

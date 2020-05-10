@@ -1,21 +1,28 @@
 {
-  "name": "jscss",
-  "bin": "./index.js",
-  "version": "1.0.0",
-  "description": "JavaScript Cascading Style Sheets",
+  "name": "jsocss",
+  "version": "0.0.1",
+  "description": "JavaScript Object Cascading Style Sheets",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Luke-zhang-04/JSCSS.git"
+    "url": "git+https://github.com/Luke-zhang-04/JSO-CSS.git"
   },
-  "keywords": [],
+  "keywords": [
+    "CSS",
+    "JS",
+    "web-app",
+    "web-dev"
+  ],
   "author": "Luke Zhang",
-  "license": "GPL",
+  "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/Luke-zhang-04/JSCSS/issues"
+    "url": "https://github.com/Luke-zhang-04/JSO-CSS/issues"
   },
-  "homepage": "https://github.com/Luke-zhang-04/JSCSS#readme"
+  "homepage": "https://github.com/Luke-zhang-04/JSO-CSS#readme",
+  "dependencies": {
+    "commander": "^5.1.0"
+  }
 }
