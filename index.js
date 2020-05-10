@@ -21,9 +21,7 @@
 */
 
 const program = require("commander")
-
-const inFile = process.argv[2]
-const outFile = process.argv[3]
+const fs = require('fs');
 
 const args = {
     in: process.argv[2],
@@ -31,4 +29,6 @@ const args = {
     path: process.argv[1]
 }
 
-console.log(args)
+// const jsocss = require(`./${args.path}/${args.in}`)
+const jsocss = require("./" + args.in)
+
