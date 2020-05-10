@@ -23,13 +23,46 @@
 const program = require("commander")
 const fs = require('fs');
 
+program
+    .option("-nol --nolint", "Don't check for for CSS errors")
+    .option("-d --debug", "display output log")
+
+program.parse(process.argv)
+
+if (program.debug) console.log("Will display full output log 😀")
+if (!program.lint) console.log("Will check for CSS errors 😊")
+else console.log("Will not check for CSS errors 🧐")
+
 const args = {
     in: process.argv[2],
     out: process.argv[3],
     path: process.argv[1]
 }
 
-// const jsonss = require(`./${args.path}/${args.in}`)
-const jsonss = require("./" + args.in)
+function write() {
+    const output = ".body {\n\tcolor: blue;\n}"
 
-console.log(jsonss.jsonss())
+    if (!!args.in) {
+        // var styles = require(`./${args.path}/${args.in}`)
+        var styles = require("./" + args.in)
+    } else {
+        throw "Missing parameter for input file 👀"
+    }
+
+    if (!args.out && !(args.out.includes(".css") || args.out.includes(".scss"))) {
+        throw "Missing parameter for output file 👀"
+    }
+
+    const data = styles.jsonss()
+
+    fs.writeFile("./" + args.out, output, (err) => {
+        if (err) throw err;
+        console.log("Done! 😃");
+    })
+}
+
+try {
+    write()
+} catch(err) {
+    console.log(err)
+}

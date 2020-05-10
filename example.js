@@ -32,7 +32,7 @@ const theme_colours = {
 function buttons() {
     const buttons = {}
     for (let [key, value] of Object.entries(theme_colours)) {
-        buttons[`btn_${key}`] = {
+        buttons[`.btn_${key}`] = {
             color: "#000",
             background_color: value
         }
