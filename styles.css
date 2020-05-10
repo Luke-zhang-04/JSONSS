@@ -1,20 +1,24 @@
-body{
+body {
   color:#fff;
   background-color:rgba(0, 0, 200, 1)
 }
-.btn-white{
+
+.btn-white {
   color:#000;
   background-color:#fff
 }
-.btn-blue{
+
+.btn-blue {
   color:#000;
   background-color:rgba(0, 0, 200, 1)
 }
-.btn-red{
+
+.btn-red {
   color:#000;
   background-color:red
 }
-.btn-green{
+
+.btn-green {
   color:#000;
   background-color:#0f0
 }

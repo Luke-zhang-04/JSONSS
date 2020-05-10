@@ -24,14 +24,14 @@ function parseJsonss(styles, pretty) {
         var val = void 0;
         if (pretty) {
             val = JSON.stringify(value).replace("_", "-").replace(",", ";\n  ").replace(/"/g, "").replace(/{/g, "").replace(/}/g, "");
-            output += key.replace("_", "-") + "{\n  " + val + "\n}\n";
+            output += key.replace("_", "-") + " {\n  " + val + "\n}\n\n";
         }
         else {
             val = JSON.stringify(value).replace("_", "-").replace(",", ";").replace(/"/g, "");
             output += key.replace("_", "-") + " " + val;
         }
     }
-    return output;
+    return output.slice(0, -1);
 }
 module.exports = {
     parser: parseJsonss
