@@ -21,7 +21,8 @@
 */
 
 const program = require("commander")
-const fs = require('fs');
+const fs = require('fs')
+const parser = require("./parser").parser
 
 program
     .option("-nol --nolint", "Don't check for for CSS errors")
@@ -40,7 +41,7 @@ const args = {
 }
 
 function write() {
-    const output = ".body {\n\tcolor: blue;\n}"
+    const output = ""
 
     if (!!args.in) {
         // var styles = require(`./${args.path}/${args.in}`)
@@ -54,6 +55,8 @@ function write() {
     }
 
     const data = styles.jsonss()
+
+    parser(data)
 
     fs.writeFile("./" + args.out, output, (err) => {
         if (err) throw err;
