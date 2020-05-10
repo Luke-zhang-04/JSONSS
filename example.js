@@ -40,7 +40,7 @@ function buttons() {
     return buttons
 }
 
-function jsocss() {
+function jsonss() {
     return {
         body: {
             color: white,
@@ -50,4 +50,4 @@ function jsocss() {
     }
 }
 
-exports.jsocss = jsocss;
+exports.jsonss = jsonss;

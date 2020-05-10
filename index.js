@@ -29,6 +29,7 @@ const args = {
     path: process.argv[1]
 }
 
-// const jsocss = require(`./${args.path}/${args.in}`)
-const jsocss = require("./" + args.in)
+// const jsonss = require(`./${args.path}/${args.in}`)
+const jsonss = require("./" + args.in)
 
+console.log(jsonss.jsonss())

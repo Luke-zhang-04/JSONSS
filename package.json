@@ -1,14 +1,14 @@
 {
-  "name": "jsocss",
+  "name": "jsonss",
   "version": "0.0.1",
-  "description": "JavaScript Object Cascading Style Sheets",
+  "description": "JavaScript Object Notated Style Sheets",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Luke-zhang-04/JSO-CSS.git"
+    "url": "git+https://github.com/Luke-zhang-04/JSONSS.git"
   },
   "keywords": [
     "CSS",
@@ -19,9 +19,9 @@
   "author": "Luke Zhang",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/Luke-zhang-04/JSO-CSS/issues"
+    "url": "https://github.com/Luke-zhang-04/JSONSS/issues"
   },
-  "homepage": "https://github.com/Luke-zhang-04/JSO-CSS#readme",
+  "homepage": "https://github.com/Luke-zhang-04/JSONSS#readme",
   "dependencies": {
     "commander": "^5.1.0"
   }
