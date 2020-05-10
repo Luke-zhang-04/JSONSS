@@ -1,0 +1,21 @@
+{
+  "name": "jscss",
+  "bin": "./index.js",
+  "version": "1.0.0",
+  "description": "JavaScript Cascading Style Sheets",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Luke-zhang-04/JSCSS.git"
+  },
+  "keywords": [],
+  "author": "Luke Zhang",
+  "license": "GPL",
+  "bugs": {
+    "url": "https://github.com/Luke-zhang-04/JSCSS/issues"
+  },
+  "homepage": "https://github.com/Luke-zhang-04/JSCSS#readme"
+}
