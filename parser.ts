@@ -1,5 +1,5 @@
 /*
- *  JSO-CSS; JavaScript Object Cascading Style Sheets
+ *  JSONSS; JavaScript Object Cascading Style Sheets
  *  Copyright (C) 2020 Luke Zhang
  *
  *  https://luke-zhang-04.github.io
@@ -19,8 +19,11 @@
 */
 
 function parseJsonss(styles: object): string {
-    const output = ""
-    console.log(styles)
+    let output: string = ""
+    for (const [key, value] of Object.entries(styles)) {
+        let val = JSON.stringify(value).replace("_", "-").replace(",", ";").replace(/"/g, "")
+        output += `${key.replace("_", "-")} ${val}`
+    }
     return output
 }
 

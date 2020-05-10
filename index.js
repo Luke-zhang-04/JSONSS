@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /*
- *  JSO-CSS; JavaScript Object Cascading Style Sheets
+ *  JSONSS; JavaScript Object Cascading Style Sheets
  *  Copyright (C) 2020 Luke Zhang
  *
  *  https://luke-zhang-04.github.io
@@ -41,7 +41,7 @@ const args = {
 }
 
 function write() {
-    const output = ""
+    let output = ""
 
     if (!!args.in) {
         // var styles = require(`./${args.path}/${args.in}`)
@@ -56,11 +56,12 @@ function write() {
 
     const data = styles.jsonss()
 
-    parser(data)
+    output += parser(data)
 
-    fs.writeFile("./" + args.out, output, (err) => {
+    fs.writeFile("./" + args.out, output, "utf-8", (err) => {
+        console.log(output)
         if (err) throw err;
-        console.log("Done! 😃");
+        else console.log("Done! 😃");
     })
 }
 
