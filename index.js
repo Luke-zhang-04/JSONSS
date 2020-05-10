@@ -22,15 +22,21 @@
 
 const program = require("commander")
 const fs = require('fs')
-const parser = require("./parser").parser
+const parser = require("./parser/parser").parser
+let pretty = false
 
 program
     .option("-nol --nolint", "Don't check for for CSS errors")
     .option("-d --debug", "display output log")
+    .option("-p --pretty", "pretty print")
 
 program.parse(process.argv)
 
 if (program.debug) console.log("Will display full output log 😀")
+if (program.pretty) {
+    console.log("Will pretty print CSS 🙏")
+    pretty = true
+}
 if (!program.lint) console.log("Will check for CSS errors 😊")
 else console.log("Will not check for CSS errors 🧐")
 
@@ -56,7 +62,7 @@ function write() {
 
     const data = styles.jsonss()
 
-    output += parser(data)
+    output += parser(data, pretty)
 
     fs.writeFile("./" + args.out, output, "utf-8", (err) => {
         console.log(output)
