@@ -29,6 +29,21 @@ const theme_colours = {
     green: green
 }
 
+function jumbotrons() {
+    const jumbotrons = {}
+    for (let [key, value] of Object.entries(theme_colours)) {
+        jumbotrons[`.jumbotron_${key}`] = {
+            border_radius: "5px",
+            background_color: value,
+            a: {
+                color: blue,
+                text_decoration: "none"
+            }
+        }
+    }
+    return jumbotrons
+}
+
 function buttons() {
     const buttons = {}
     for (let [key, value] of Object.entries(theme_colours)) {
@@ -46,7 +61,8 @@ function jsonss() {
             color: white,
             background_color: blue
         },
-        ...buttons()
+        ...buttons(),
+        ...jumbotrons()
     }
 }
 
