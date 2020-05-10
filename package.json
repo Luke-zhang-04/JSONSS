@@ -23,6 +23,11 @@
   },
   "homepage": "https://github.com/Luke-zhang-04/JSONSS#readme",
   "dependencies": {
-    "commander": "^5.1.0"
+    "@types/node": "^13.13.5",
+    "commander": "^5.1.0",
+    "tsc": "^1.20150623.0"
+  },
+  "devDependencies": {
+    "typescript": "^3.8.3"
   }
 }

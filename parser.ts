@@ -1,5 +1,5 @@
 /*
- *  JSO-CSS; JavaScript Object Cascading Style Sheets
+ *  JSONSS; JavaScript Object Cascading Style Sheets
  *  Copyright (C) 2020 Luke Zhang
  *
  *  https://luke-zhang-04.github.io
@@ -18,36 +18,15 @@
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-const white = "#fff"
-const blue = "rgba(0, 0, 200, 1)"
-const red = "red"
-const green = "#0f0"
-const theme_colours = {
-    white: white,
-    blue: blue,
-    red: red,
-    green: green
-}
-
-function buttons() {
-    const buttons = {}
-    for (let [key, value] of Object.entries(theme_colours)) {
-        buttons[`.btn_${key}`] = {
-            color: "#000",
-            background_color: value
-        }
+function parseJsonss(styles: object): string {
+    let output: string = ""
+    for (const [key, value] of Object.entries(styles)) {
+        let val = JSON.stringify(value).replace("_", "-").replace(",", ";").replace(/"/g, "")
+        output += `${key.replace("_", "-")} ${val}`
     }
-    return buttons
+    return output
 }
 
-function jsonss() {
-    return {
-        body: {
-            color: white,
-            background_color: blue
-        },
-        ...buttons()
-    }
+module.exports = {
+    parser: parseJsonss
 }
-
-exports.jsonss = jsonss;

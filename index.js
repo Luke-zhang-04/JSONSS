@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /*
- *  JSO-CSS; JavaScript Object Cascading Style Sheets
+ *  JSONSS; JavaScript Object Cascading Style Sheets
  *  Copyright (C) 2020 Luke Zhang
  *
  *  https://luke-zhang-04.github.io
@@ -21,7 +21,18 @@
 */
 
 const program = require("commander")
-const fs = require('fs');
+const fs = require('fs')
+const parser = require("./parser").parser
+
+program
+    .option("-nol --nolint", "Don't check for for CSS errors")
+    .option("-d --debug", "display output log")
+
+program.parse(process.argv)
+
+if (program.debug) console.log("Will display full output log 😀")
+if (!program.lint) console.log("Will check for CSS errors 😊")
+else console.log("Will not check for CSS errors 🧐")
 
 const args = {
     in: process.argv[2],
@@ -29,7 +40,33 @@ const args = {
     path: process.argv[1]
 }
 
-// const jsonss = require(`./${args.path}/${args.in}`)
-const jsonss = require("./" + args.in)
+function write() {
+    let output = ""
 
-console.log(jsonss.jsonss())
+    if (!!args.in) {
+        // var styles = require(`./${args.path}/${args.in}`)
+        var styles = require("./" + args.in)
+    } else {
+        throw "Missing parameter for input file 👀"
+    }
+
+    if (!args.out && !(args.out.includes(".css") || args.out.includes(".scss"))) {
+        throw "Missing parameter for output file 👀"
+    }
+
+    const data = styles.jsonss()
+
+    output += parser(data)
+
+    fs.writeFile("./" + args.out, output, "utf-8", (err) => {
+        console.log(output)
+        if (err) throw err;
+        else console.log("Done! 😃");
+    })
+}
+
+try {
+    write()
+} catch(err) {
+    console.log(err)
+}
