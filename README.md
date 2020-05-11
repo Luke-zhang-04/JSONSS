@@ -15,6 +15,7 @@
     <a href="https://www.npmjs.com/package/jsonss"><img alt="Github Releases" src="https://img.shields.io/github/v/release/luke-zhang-04/JSONSS"/></a>
     <a href="https://www.npmjs.com/package/jsonss"><img alt="NPM downloads" src="https://img.shields.io/npm/dt/jsonss?logo=npm"/></a>
     <a href=""><img alt="Github workflow status" src="https://img.shields.io/github/workflow/status/luke-zhang-04/jsonss/Node.js CI?logo=node.js"/></a>
+    <a href="https://github.com/Luke-zhang-04/JSONSS/actions?query=workflow%3Atsint"><img alt="workflow status" src="https://github.com/Luke-zhang-04/JSONSS/workflows/tsint/badge.svg"/></a>
     <br/>
     <a href="https://app.codacy.com/manual/luke.zhang2004/JSONSS?utm_source=github.com&utm_medium=referral&utm_content=Luke-zhang-04/JSONSS&utm_campaign=Badge_Grade_Dashboard"><img alt="Codacy Badge" src="https://api.codacy.com/project/badge/Grade/8c61ac16af44418f821b06f0f8995c7a"/></a>
     <a href="https://codeclimate.com/github/Luke-zhang-04/JSONSS"><img alt="maintainability" src="https://img.shields.io/codeclimate/maintainability-percentage/Luke-zhang-04/JSONSS?logo=code-climate"/></a>
