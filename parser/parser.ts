@@ -19,7 +19,7 @@
 */
 import { formatComma } from "./formatter";
 
-const parseJsonss = (styles: Object, pretty: boolean, debug: boolean): string => {
+const parseJsonss = (styles: {}, pretty: boolean, debug: boolean): string => {
     let output = ""
     for (const [key, value] of Object.entries(styles)) {
         if (debug) {console.log("🔎 parsing", key, "=", value)}
