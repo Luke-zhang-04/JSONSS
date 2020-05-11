@@ -1,4 +1,4 @@
-/*
+/**
  *  JSONSS; JavaScript Object Cascading Style Sheets
  *  Copyright (C) 2020 Luke Zhang
  *
@@ -19,36 +19,42 @@
 */
 import { formatComma } from "./formatter";
 
+/**
+ * @param {object} styles - JSON object with CSS properties
+ * @param {boolean} pretty - pretty print or not
+ * @param {boolean} debug - debug or not
+ * @returns {string} parsed JSONSS string, ready to be written to CSS or SCSS file
+ */
 export const parseJsonss = (styles: {}, pretty: boolean, debug: boolean): string => {
     let output = ""
-    for (const [key, value] of Object.entries(styles)) {
+    for (const [key, value] of Object.entries(styles)) { // iterate through object
         if (debug) {console.log("🔎 parsing", key, "=", value)}
 
         let val: string
 
-        if (pretty) {
+        if (pretty) { // pretty print
             if (debug) {
                 console.log("…formatting", value, "pretty print =", true)
             }
 
-            val = formatComma (value, pretty)
-                .replace(/_/g, "-")
-                .replace(/"/g, "")
-                .replace(/{/g, "")
+            val = formatComma (value, pretty) // format commas with new lines and semicolons
+                .replace(/_/g, "-") // replace underscores with dashes
+                .replace(/"/g, "") // remove quotes
+                .replace(/{/g, "") // remove braces (handled with pretty)
                 .replace(/}/g, "")
 
-            output += `${key.replace(/_/g, "-")} {\n${val}}\n\n`
+            output += `${key.replace(/_/g, "-")} {\n${val}}\n\n` //insert new
 
-        } else {
+        } else { //don't pretty print
             if (debug) {
                 console.log("…formatting", value, "pretty print = ", false)
             }
 
-            val = formatComma (value, pretty)
-                .replace(/_/g, "-")
-                .replace(/"/g, "")
+            val = formatComma (value, pretty) //format commas with semicolons
+                .replace(/_/g, "-") // replace underscores with dashes
+                .replace(/"/g, "") //remove quotes
 
-            output += `${key.replace(/_/g, "-")} ${val}`
+            output += `${key.replace(/_/g, "-")} ${val}` //insert new
 
         }
         if (debug) {
@@ -58,5 +64,5 @@ export const parseJsonss = (styles: {}, pretty: boolean, debug: boolean): string
             )
         }
     }
-    return pretty ? output.slice(0, -1) : output + "\n"
+    return pretty ? output.slice(0, -1) : output + "\n" //if pretty strip extra newline at end
 }

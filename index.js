@@ -41,7 +41,7 @@ const args = {
 const write = () => {
     let output = "";
     let styles;
-    if (!!args.in) {
+    if (args.in) {
         styles = require("./" + args.in);
     }
     else {

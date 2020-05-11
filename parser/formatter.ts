@@ -1,4 +1,9 @@
-/*
+/**
+ * JSONSS; JavaScript Object Cascading Style Sheets
+ * Formatter; defines formatting functions to help parse JSONSS
+ */
+
+/**
  *  JSONSS; JavaScript Object Cascading Style Sheets
  *  Copyright (C) 2020 Luke Zhang
  *
@@ -18,6 +23,11 @@
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+/**
+ * @param {object} input - JSON object with CSS properties
+ * @param {boolean} pretty - pretty print or not
+ * @returns {string} returns a string with newlines and tabs
+ */
 export const formatComma = (input: any, pretty: boolean): string => {
     let output: {[key: string]: string | {}} = {}
 
