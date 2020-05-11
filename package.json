@@ -1,6 +1,6 @@
 {
-  "name": "jsonss",
-  "version": "0.0.3-a",
+  "name": "@luke-zhang-04/jsonss",
+  "version": "0.0.31-a",
   "description": "JavaScript Object Notated Style Sheets",
   "main": "index.js",
   "scripts": {
@@ -14,7 +14,8 @@
     "CSS",
     "JS",
     "web-app",
-    "web-dev"
+    "web-dev",
+    "preprocessor"
   ],
   "author": "Luke Zhang",
   "license": "GPL-3.0",
@@ -29,5 +30,8 @@
   "devDependencies": {
     "tsc": "^1.20150623.0",
     "typescript": "^3.8.3"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   }
 }
