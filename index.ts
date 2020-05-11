@@ -90,7 +90,6 @@ const write = (): number | void => {
             console.log("Done! 😃")
         }
     })
-    
     return 1 // return 1 on sucess
 }
 
@@ -99,6 +98,7 @@ try {
     if (success !== 1) {
         console.log("An error occured 😰")
     }
+
 } catch(err) {
     console.log(err)
 }
