@@ -25,7 +25,7 @@ import { formatComma } from "./formatter";
  * @param {boolean} debug - debug or not
  * @returns {string} parsed JSONSS string, ready to be written to CSS or SCSS file
  */
-export const parseJsonss = (styles: {}, pretty: boolean, debug: boolean): string => {
+export const parseJsonss = (styles: {}, pretty: boolean, debug: boolean, history: string[] = []): string => {
     let output = ""
     for (const [key, value] of Object.entries(styles)) { // iterate through object
         if (debug) {console.log("🔎 parsing", key, "=", value)}
@@ -37,7 +37,7 @@ export const parseJsonss = (styles: {}, pretty: boolean, debug: boolean): string
                 console.log("…formatting", value, "pretty print =", true)
             }
 
-            val = formatComma (value, pretty) // format commas with new lines and semicolons
+            val = formatComma (value, pretty, debug) // format commas with new lines and semicolons
                 .replace(/_/g, "-") // replace underscores with dashes
                 .replace(/"/g, "") // remove quotes
                 .replace(/{/g, "") // remove braces (handled with pretty)
@@ -50,7 +50,7 @@ export const parseJsonss = (styles: {}, pretty: boolean, debug: boolean): string
                 console.log("…formatting", value, "pretty print = ", false)
             }
 
-            val = formatComma (value, pretty) //format commas with semicolons
+            val = formatComma (value, pretty, debug) //format commas with semicolons
                 .replace(/_/g, "-") // replace underscores with dashes
                 .replace(/"/g, "") //remove quotes
 
