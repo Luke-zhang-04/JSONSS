@@ -72,6 +72,11 @@ Flags incude
 -p --pretty, pretty print
 ```
 
+E.g
+```bash
+node node_modules/jsonss example.js styles.css -d --pretty
+```
+
 ## License notice ##
 Even though this program is <a href="https://github.com/Luke-zhang-04/JSONSS/blob/master/LICENSE">licensed</a> under the <a href="https://www.gnu.org/licenses/#GPL">GNU General Public License</a>, any output from this program is NOT under the terms of the license. Only the source code of this tool is licensed under GPL. As long as your production build is not dependent on this tool, the terms of this license do not apply.<br/>
 To quote <a href="https://www.gnu.org/licenses/gpl-faq.en.html#WhatCaseIsOutputGPL">GNU.org</a>,
