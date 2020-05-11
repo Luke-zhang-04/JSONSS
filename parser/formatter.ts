@@ -23,15 +23,22 @@ export const formatComma = (input: any, pretty: boolean): string => {
 
     for (let [key, value] of Object.entries(input)) {
         if (typeof(value) === "string") {
-            output[`-*TAB*-${key}`] = `${value};-*NEWLINE*-`
+            if (pretty) {
+                output[`-*TAB*-${key}`] = `${value};-*NEWLINE*-`
+            } else {
+                output[key] = `${value};`
+            }
         }
     }
 
     return (
-        JSON.stringify(output)
+        pretty ?
+            JSON.stringify(output)
             .replace(/,/g, "")
             .replace(/-\*NEWLINE\*-/g, "\n")
             .replace(/:/g, ": ")
             .replace(/-\*TAB\*-/g, "\t")
+        :JSON.stringify(output)
+            .replace(/,/g, "")
     );
 }
