@@ -21,7 +21,7 @@
 */
 
 const program = require("commander")
-const fs = require('fs')
+const fs = require("fs")
 const parser = require("./parser/parser").parser
 let pretty = false
 let debug = false
@@ -72,8 +72,8 @@ function write() {
     output += parser(data, pretty, debug)
 
     fs.writeFile("./" + args.out, output, "utf-8", (err) => {
-        if (err) throw err;
-        else console.log("Done! 😃");
+        if (err) {throw err}
+        else {console.log("Done! 😃")}
     })
 }
 
