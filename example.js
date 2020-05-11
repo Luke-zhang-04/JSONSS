@@ -22,29 +22,31 @@ const white = "#fff"
 const blue = "rgba(0, 0, 200, 1)"
 const red = "red"
 const green = "#0f0"
+const none = "rgba(0, 0, 0, 0)"
 const themeColours = {
     white: white,
     blue: blue,
     red: red,
-    green: green
+    green: green,
+    none: none
 }
 
-function jumbotrons() {
-    const jumbotrons = {}
+const containers = () => {
+    const containers = {}
     for (let [key, value] of Object.entries(themeColours)) {
-        jumbotrons[`.jumbotron_${key}`] = {
+        containers[`.container-${key}`] = {
             border_radius: "5px",
             background_color: value,
-            // a: {
-            //     color: blue,
-            //     text_decoration: "none"
-            // }
+            a: {
+                color: blue,
+                text_decoration: "none"
+            }
         }
     }
-    return jumbotrons
+    return containers
 }
 
-function buttons() {
+const buttons = () => {
     const buttons = {}
     for (let [key, value] of Object.entries(themeColours)) {
         buttons[`.btn_${key}`] = {
@@ -55,14 +57,14 @@ function buttons() {
     return buttons
 }
 
-function jsonss() {
+const jsonss = () => {
     return {
         body: {
             color: white,
             background_color: blue
         },
         ...buttons(),
-        ...jumbotrons()
+        ...containers()
     }
 }
 
