@@ -18,8 +18,20 @@
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-export const formatComma = (input: string): string => {
-    let output = ""
-    console.log(input)
-    return output
+export const formatComma = (input: any, pretty: boolean): string => {
+    let output: {[key: string]: string | {}} = {}
+
+    for (let [key, value] of Object.entries(input)) {
+        if (typeof(value) === "string") {
+            output[`-*TAB*-${key}`] = `${value};-*NEWLINE*-`
+        }
+    }
+
+    return (
+        JSON.stringify(output)
+            .replace(/,/g, "")
+            .replace(/-\*NEWLINE\*-/g, "\n")
+            .replace(/:/g, ": ")
+            .replace(/-\*TAB\*-/g, "\t")
+    );
 }

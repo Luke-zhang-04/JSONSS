@@ -29,26 +29,22 @@ const parseJsonss = (styles: {}, pretty: boolean, debug: boolean): string => {
         if (pretty) {
             if (debug) {console.log("…formatting", value, "pretty print =", true)}
 
-            val = formatComma (
-                JSON.stringify(value)
-                    .replace(/_/g, "-")
-                    .replace(/"/g, "")
-                    .replace(/{/g, "")
-                    .replace(/}/g, "")
-            )
+            val = formatComma (value, pretty)
+                .replace(/_/g, "-")
+                .replace(/"/g, "")
+                .replace(/{/g, "")
+                .replace(/}/g, "")
 
-            output += `${key.replace(/_/g, "-")} {\n  ${val}\n}\n\n`
+            output += `${key.replace(/_/g, "-")} {\n${val}}\n\n`
 
         } else {
             if (debug) {console.log("…formatting", value, "pretty print = ", false)}
 
-            val = formatComma (
-                JSON.stringify(value)
-                    .replace(/_/g, "-")
-                    .replace(/"/g, "")
-            )
+            val = formatComma (value, pretty)
+                .replace(/_/g, "-")
+                .replace(/"/g, "")
 
-            output += `${key.replace("_", "-")} ${val}`
+            output += `${key.replace(/_/g, "-")} ${val}`
 
         }
         if (debug) {console.log("✔ formatted", `${key.replace(/_/g, "-")} {${val.replace(/\n/g, "")}}`)}

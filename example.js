@@ -35,10 +35,10 @@ function jumbotrons() {
         jumbotrons[`.jumbotron_${key}`] = {
             border_radius: "5px",
             background_color: value,
-            a: {
-                color: blue,
-                text_decoration: "none"
-            }
+            // a: {
+            //     color: blue,
+            //     text_decoration: "none"
+            // }
         }
     }
     return jumbotrons
