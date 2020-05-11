@@ -73,4 +73,9 @@ Flags incude
 ```
 
 ## License notice ##
-Even though this program is <a href="https://github.com/Luke-zhang-04/JSONSS/blob/master/LICENSE">licensed</a> under the <a href="https://www.gnu.org/licenses/#GPL">GNU General Public License</a>, any output from this program is NOT under the terms of the license. Only the source code of this tool is licensed under GPL. As long as your production build is not dependent on this tool, the terms of this license do not apply.
+Even though this program is <a href="https://github.com/Luke-zhang-04/JSONSS/blob/master/LICENSE">licensed</a> under the <a href="https://www.gnu.org/licenses/#GPL">GNU General Public License</a>, any output from this program is NOT under the terms of the license. Only the source code of this tool is licensed under GPL. As long as your production build is not dependent on this tool, the terms of this license do not apply.<br/>
+To quote <a href="https://www.gnu.org/licenses/gpl-faq.en.html#WhatCaseIsOutputGPL">GNU.org</a>,
+>   The output of a program is not, in general, covered by the copyright on the code of the program. So the license of the code of the program does not apply to the output, whether you pipe it into a file, make a screenshot, screencast, or video.<br/><br/>
+>   The exception would be when the program displays a full screen of text and/or art that comes from the program. Then the copyright on that text and/or art covers the output. Programs that output audio, such as video games, would also fit into this exception.<br/><br/>
+>   If the art/music is under the GPL, then the GPL applies when you copy it no matter how you copy it. However, fair use may still apply.<br/><br/>
+>   Keep in mind that some programs, particularly video games, can have artwork/audio that is licensed separately from the underlying GPLed game. In such cases, the license on the artwork/audio would dictate the terms under which video/streaming may occur.
