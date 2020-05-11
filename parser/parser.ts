@@ -39,8 +39,6 @@ function parseJsonss(styles: Object, pretty: boolean, debug: boolean): string {
 
             output += `${key.replace(/_/g, "-")} {\n  ${val}\n}\n\n`
 
-            if (debug) {console.log("✔formatted", `${key.replace(/_/g, "-")} {${val.replace(/\n/g, "")}}`)}
-
         } else {
             if (debug) {console.log("…formatting", value, "pretty print = ", false)}
 
@@ -51,9 +49,9 @@ function parseJsonss(styles: Object, pretty: boolean, debug: boolean): string {
             )
 
             output += `${key.replace("_", "-")} ${val}`
-            if (debug) {console.log("✔ formatted", `${key.replace(/_/g, "-")} {${val.replace(/\n/g, "")}}`)}
-
+            
         }
+        if (debug) {console.log("✔ formatted", `${key.replace(/_/g, "-")} {${val.replace(/\n/g, "")}}`)}
     }
     return pretty ? output.slice(0, -1) : output + "\n"
 }
