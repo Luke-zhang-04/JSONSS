@@ -1,4 +1,4 @@
-name: tsint
+name: tslint
 
 on:
   push:
