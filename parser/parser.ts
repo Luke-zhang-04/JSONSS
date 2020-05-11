@@ -19,8 +19,8 @@
 */
 import { formatComma } from "./formatter";
 
-function parseJsonss(styles: Object, pretty: boolean, debug: boolean): string {
-    let output: string = ""
+const parseJsonss = (styles: Object, pretty: boolean, debug: boolean): string => {
+    let output = ""
     for (const [key, value] of Object.entries(styles)) {
         if (debug) {console.log("🔎 parsing", key, "=", value)}
 
@@ -49,7 +49,7 @@ function parseJsonss(styles: Object, pretty: boolean, debug: boolean): string {
             )
 
             output += `${key.replace("_", "-")} ${val}`
-            
+
         }
         if (debug) {console.log("✔ formatted", `${key.replace(/_/g, "-")} {${val.replace(/\n/g, "")}}`)}
     }

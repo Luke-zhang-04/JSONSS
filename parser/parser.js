@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const formatter_1 = require("./formatter");
-function parseJsonss(styles, pretty, debug) {
+const parseJsonss = (styles, pretty, debug) => {
     let output = "";
     for (const [key, value] of Object.entries(styles)) {
         if (debug) {
@@ -33,7 +33,7 @@ function parseJsonss(styles, pretty, debug) {
         }
     }
     return pretty ? output.slice(0, -1) : output + "\n";
-}
+};
 module.exports = {
     parser: parseJsonss
 };

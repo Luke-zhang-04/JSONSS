@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-export function formatComma(input: string): string {
-    let output: string = ""
+export const formatComma = (input: string): string => {
+    let output = ""
     console.log(input)
     return output
 }
