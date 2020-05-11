@@ -26,7 +26,7 @@ export const formatComma = (input: any, pretty: boolean): string => {
             if (pretty) {
                 output[`-*TAB*-${key}`] = `${value};-*NEWLINE*-`
             } else {
-                output[key] = `${value};`
+                output.key = `${value};`
             }
         }
     }

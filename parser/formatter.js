@@ -8,7 +8,7 @@ exports.formatComma = (input, pretty) => {
                 output[`-*TAB*-${key}`] = `${value};-*NEWLINE*-`;
             }
             else {
-                output[key] = `${value};`;
+                output.key = `${value};`;
             }
         }
     }
