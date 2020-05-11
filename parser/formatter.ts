@@ -38,7 +38,7 @@ export const formatComma = (input: any, pretty: boolean): string => {
                 .replace(/-\*NEWLINE\*-/g, "\n")
                 .replace(/:/g, ": ")
                 .replace(/-\*TAB\*-/g, "\t")
-            :JSON.stringify(output)
+            : JSON.stringify(output)
                 .replace(/,/g, "")
     );
 }

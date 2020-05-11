@@ -27,7 +27,9 @@ const parseJsonss = (styles: {}, pretty: boolean, debug: boolean): string => {
         let val: string
 
         if (pretty) {
-            if (debug) {console.log("…formatting", value, "pretty print =", true)}
+            if (debug) {
+                console.log("…formatting", value, "pretty print =", true)
+            }
 
             val = formatComma (value, pretty)
                 .replace(/_/g, "-")
@@ -38,7 +40,9 @@ const parseJsonss = (styles: {}, pretty: boolean, debug: boolean): string => {
             output += `${key.replace(/_/g, "-")} {\n${val}}\n\n`
 
         } else {
-            if (debug) {console.log("…formatting", value, "pretty print = ", false)}
+            if (debug) {
+                console.log("…formatting", value, "pretty print = ", false)
+            }
 
             val = formatComma (value, pretty)
                 .replace(/_/g, "-")
@@ -47,7 +51,12 @@ const parseJsonss = (styles: {}, pretty: boolean, debug: boolean): string => {
             output += `${key.replace(/_/g, "-")} ${val}`
 
         }
-        if (debug) {console.log("✔ formatted", `${key.replace(/_/g, "-")} {${val.replace(/\n/g, "")}}`)}
+        if (debug) {
+            console.log(
+                "✔ formatted",
+                `${key.replace(/_/g, "-")} {${val.replace(/\n/g, "")}}`
+            )
+        }
     }
     return pretty ? output.slice(0, -1) : output + "\n"
 }

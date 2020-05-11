@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.formatComma = (input, pretty) => {
     let output = {};
-    for (let [key, value] of Object.entries(input)) {
+    for (const [key, value] of Object.entries(input)) {
         if (typeof (value) === "string") {
             if (pretty) {
                 output[`-*TAB*-${key}`] = `${value};-*NEWLINE*-`;
