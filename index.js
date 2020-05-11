@@ -43,8 +43,8 @@ if (program.pretty) {
     pretty = true
 }
 
-if (!program.lint) console.log("Will check for CSS errors 😊")
-else console.log("Will not check for CSS errors 🧐")
+if (!program.lint) {console.log("Will check for CSS errors 😊")}
+else {console.log("Will not check for CSS errors 🧐")}
 
 const args = {
     in: process.argv[2],
@@ -54,10 +54,11 @@ const args = {
 
 function write() {
     let output = ""
+    let styles
 
     if (!!args.in) {
-        // var styles = require(`./${args.path}/${args.in}`)
-        var styles = require("./" + args.in)
+        // styles = require(`./${args.path}/${args.in}`)
+        styles = require("./" + args.in)
     } else {
         throw "Missing parameter for input file 👀"
     }
