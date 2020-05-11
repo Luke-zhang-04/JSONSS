@@ -34,11 +34,11 @@ export const formatComma = (input: any, pretty: boolean): string => {
     return (
         pretty ?
             JSON.stringify(output)
-            .replace(/,/g, "")
-            .replace(/-\*NEWLINE\*-/g, "\n")
-            .replace(/:/g, ": ")
-            .replace(/-\*TAB\*-/g, "\t")
-        :JSON.stringify(output)
-            .replace(/,/g, "")
+                .replace(/,/g, "")
+                .replace(/-\*NEWLINE\*-/g, "\n")
+                .replace(/:/g, ": ")
+                .replace(/-\*TAB\*-/g, "\t")
+            :JSON.stringify(output)
+                .replace(/,/g, "")
     );
 }
