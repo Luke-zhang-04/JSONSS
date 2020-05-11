@@ -1,6 +1,6 @@
 {
   "name": "jsonss",
-  "version": "0.0.2-prealpha",
+  "version": "0.0.3-a",
   "description": "JavaScript Object Notated Style Sheets",
   "main": "index.js",
   "scripts": {
