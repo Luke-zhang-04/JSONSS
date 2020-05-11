@@ -21,7 +21,7 @@
 export const formatComma = (input: any, pretty: boolean): string => {
     let output: {[key: string]: string | {}} = {}
 
-    for (let [key, value] of Object.entries(input)) {
+    for (const [key, value] of Object.entries(input)) {
         if (typeof(value) === "string") {
             if (pretty) {
                 output[`-*TAB*-${key}`] = `${value};-*NEWLINE*-`
