@@ -11,7 +11,8 @@
         "no-consecutive-blank-lines": true,
         "no-console": false,
         "semicolon": false,
-        "whitespace": false
+        "whitespace": false,
+        "no-string-throw": false
     },
     "jsRules": {
         "max-line-length": {
