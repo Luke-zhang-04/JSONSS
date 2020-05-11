@@ -17,15 +17,10 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
+import { formatComma } from "./formatter";
 
-function formatComma(input: string): string {
-    let output: string = ""
-    console.log(input)
-    return output
-}
-
-function parseJsonss(styles: object, pretty: boolean, debug: boolean): string {
-    let output: string = ""
+const parseJsonss = (styles: {}, pretty: boolean, debug: boolean): string => {
+    let output = ""
     for (const [key, value] of Object.entries(styles)) {
         if (debug) {console.log("🔎 parsing", key, "=", value)}
 
@@ -34,31 +29,25 @@ function parseJsonss(styles: object, pretty: boolean, debug: boolean): string {
         if (pretty) {
             if (debug) {console.log("…formatting", value, "pretty print =", true)}
 
-            val = formatComma(
-                JSON.stringify(value)
-                    .replace(/_/g, "-")
-                    .replace(/"/g, "")
-                    .replace(/{/g, "")
-                    .replace(/}/g, "")
-            )
+            val = formatComma (value, pretty)
+                .replace(/_/g, "-")
+                .replace(/"/g, "")
+                .replace(/{/g, "")
+                .replace(/}/g, "")
 
-            output += `${key.replace(/_/g, "-")} {\n  ${val}\n}\n\n`
-
-            if (debug) {console.log("✔formatted", `${key.replace(/_/g, "-")} {${val.replace(/\n/g, "")}}`)}
+            output += `${key.replace(/_/g, "-")} {\n${val}}\n\n`
 
         } else {
             if (debug) {console.log("…formatting", value, "pretty print = ", false)}
 
-            val = formatComma(
-                JSON.stringify(value)
-                    .replace(/_/g, "-")
-                    .replace(/"/g, "")
-            )
+            val = formatComma (value, pretty)
+                .replace(/_/g, "-")
+                .replace(/"/g, "")
 
-            output += `${key.replace("_", "-")} ${val}`
-            if (debug) {console.log("✔ formatted", `${key.replace(/_/g, "-")} {${val.replace(/\n/g, "")}}`)}
+            output += `${key.replace(/_/g, "-")} ${val}`
 
         }
+        if (debug) {console.log("✔ formatted", `${key.replace(/_/g, "-")} {${val.replace(/\n/g, "")}}`)}
     }
     return pretty ? output.slice(0, -1) : output + "\n"
 }
