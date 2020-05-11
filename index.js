@@ -36,9 +36,9 @@ else {
 const args = {
     in: process.argv[2],
     out: process.argv[3],
-    path: process.argv[1]
+    path: process.argv[1],
 };
-function write() {
+const write = () => {
     let output = "";
     let styles;
     if (!!args.in) {
@@ -55,14 +55,13 @@ function write() {
     fs.writeFile("./" + args.out, output, "utf-8", (err) => {
         if (err) {
             throw err;
-            return -1;
         }
         else {
             console.log("Done! 😃");
         }
     });
     return 1;
-}
+};
 try {
     const success = write();
     if (success !== 1) {

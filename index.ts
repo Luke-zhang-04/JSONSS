@@ -51,10 +51,10 @@ else {console.log("Will not check for CSS errors 🧐")}
 const args = {
     in: process.argv[2],
     out: process.argv[3],
-    path: process.argv[1]
+    path: process.argv[1],
 }
 
-function write(): number {
+const write = (): number | void => {
     let output = ""
     let styles
 
@@ -76,7 +76,6 @@ function write(): number {
     fs.writeFile("./" + args.out, output, "utf-8", (err: unknown) => {
         if (err) {
             throw err
-            return -1
         }
         else {console.log("Done! 😃")}
     })
