@@ -27,12 +27,12 @@ function formatComma(input: string): string {
 function parseJsonss(styles: object, pretty: boolean, debug: boolean): string {
     let output: string = ""
     for (const [key, value] of Object.entries(styles)) {
-        if (debug) console.log("🔎 parsing", key, "=", value)
+        if (debug) {console.log("🔎 parsing", key, "=", value)}
 
         let val: string
 
         if (pretty) {
-            if (debug) console.log("…formatting", value, "pretty print =", true)
+            if (debug) {console.log("…formatting", value, "pretty print =", true)}
 
             val = formatComma(
                 JSON.stringify(value)
@@ -44,10 +44,10 @@ function parseJsonss(styles: object, pretty: boolean, debug: boolean): string {
 
             output += `${key.replace(/_/g, "-")} {\n  ${val}\n}\n\n`
 
-            if (debug) console.log("✔formatted", `${key.replace(/_/g, "-")} {${val.replace(/\n/g, "")}}`)
+            if (debug) {console.log("✔formatted", `${key.replace(/_/g, "-")} {${val.replace(/\n/g, "")}}`)}
 
         } else {
-            if (debug) console.log("…formatting", value, "pretty print = ", false)
+            if (debug) {console.log("…formatting", value, "pretty print = ", false)}
 
             val = formatComma(
                 JSON.stringify(value)
@@ -56,7 +56,7 @@ function parseJsonss(styles: object, pretty: boolean, debug: boolean): string {
             )
 
             output += `${key.replace("_", "-")} ${val}`
-            if (debug) console.log("✔ formatted", `${key.replace(/_/g, "-")} {${val.replace(/\n/g, "")}}`)
+            if (debug) {console.log("✔ formatted", `${key.replace(/_/g, "-")} {${val.replace(/\n/g, "")}}`)}
 
         }
     }
