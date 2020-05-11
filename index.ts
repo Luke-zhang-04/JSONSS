@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { Command } from 'commander';
+import { Command } from "commander";
 import * as fs from "fs";
 import { parseJsonss as parser } from "./parser/parser";
 
@@ -46,8 +46,11 @@ if (program.pretty) {
     pretty = true
 }
 
-if (!program.lint) {console.log("Will check for CSS errors 😊")}
-else {console.log("Will not check for CSS errors 🧐")}
+if (!program.lint) {
+    console.log("Will check for CSS errors 😊")
+} else {
+    console.log("Will not check for CSS errors 🧐")
+}
 
 const args = {
     in: process.argv[2], // input file
@@ -69,7 +72,9 @@ const write = (): number | void => {
         throw "Missing parameter for input file 👀"
     }
 
-    if (!args.out && !(args.out.includes(".css") || args.out.includes(".scss"))) { // make sure file is valid
+    if (
+        !args.out && !(args.out.includes(".css") || args.out.includes(".scss"))
+    ) { // make sure file is valid
         throw "Missing parameter for output file 👀"
     }
 
@@ -77,14 +82,16 @@ const write = (): number | void => {
 
     output += parser(data, pretty, debug) // parse JSON object
 
-    fs.writeFile("./" + args.out, output, "utf-8", (err: unknown) => { // write output to output file
+    // write output to output file
+    fs.writeFile("./" + args.out, output, "utf-8", (err: unknown) => {
         if (err) {
             throw err
         } else {
             console.log("Done! 😃")
         }
     })
-    return 1 //return 1 on sucess
+    
+    return 1 // return 1 on sucess
 }
 
 try {
