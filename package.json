@@ -1,10 +1,10 @@
 {
   "name": "jsonss",
-  "version": "0.0.2-prealpha",
+  "version": "0.0.3-a",
   "description": "JavaScript Object Notated Style Sheets",
   "main": "index.js",
   "scripts": {
-    "test": "node . example.js styles.css -p -d"
+    "test": "node . example/example.js example/styles.css -p -d"
   },
   "repository": {
     "type": "git",

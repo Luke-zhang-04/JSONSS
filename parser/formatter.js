@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.formatComma = (input, pretty) => {
+exports.formatComma = (input, pretty, debug, history = []) => {
     let output = {};
     for (const [key, value] of Object.entries(input)) {
         if (typeof (value) === "string") {
@@ -10,6 +10,9 @@ exports.formatComma = (input, pretty) => {
             else {
                 output.key = `${value};`;
             }
+        }
+        else if (typeof (value) === "object") {
+            console.log("FOUND OBJECT", key, value);
         }
     }
     return (pretty ?
