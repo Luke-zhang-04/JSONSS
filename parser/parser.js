@@ -18,9 +18,6 @@ function parseJsonss(styles, pretty, debug) {
                 .replace(/{/g, "")
                 .replace(/}/g, ""));
             output += `${key.replace(/_/g, "-")} {\n  ${val}\n}\n\n`;
-            if (debug) {
-                console.log("✔formatted", `${key.replace(/_/g, "-")} {${val.replace(/\n/g, "")}}`);
-            }
         }
         else {
             if (debug) {
@@ -30,9 +27,9 @@ function parseJsonss(styles, pretty, debug) {
                 .replace(/_/g, "-")
                 .replace(/"/g, ""));
             output += `${key.replace("_", "-")} ${val}`;
-            if (debug) {
-                console.log("✔ formatted", `${key.replace(/_/g, "-")} {${val.replace(/\n/g, "")}}`);
-            }
+        }
+        if (debug) {
+            console.log("✔ formatted", `${key.replace(/_/g, "-")} {${val.replace(/\n/g, "")}}`);
         }
     }
     return pretty ? output.slice(0, -1) : output + "\n";
