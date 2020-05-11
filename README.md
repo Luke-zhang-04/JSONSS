@@ -37,7 +37,7 @@ Or, if you just want to install as a dev dependency, type
 #npm install jsonss --save-dev
 npm i jsonss --save-dev
 ```
-#### GitHub ###
+#### GitHub ####
 Download the latest release <a href="https://github.com/Luke-zhang-04/JSONSS/releases">here</a> or clone through command line
 ```bash
 git clone --depth=1 https://github.com/Luke-zhang-04/JSONSS.git
