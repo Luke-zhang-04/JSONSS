@@ -60,7 +60,7 @@ export const parseJsonss = (styles: {}, pretty: boolean, debug: boolean, history
         if (debug) {
             console.log(
                 "✔ formatted",
-                `${key.replace(/_/g, "-")} {${val.replace(/\n/g, "")}}`
+                `${key.replace(/_/g, "-")} {${val.replace(/\n/g, "")}}`,
             )
         }
     }

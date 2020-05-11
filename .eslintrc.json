@@ -1,5 +1,5 @@
 {
-    "extends": "tslint:recommended",
+    "ecmaVersion": 2020,
     "rules": {
         "max-line-length": {
             "options": [80]
@@ -11,7 +11,7 @@
         "no-consecutive-blank-lines": true,
         "no-console": false,
         "no-string-throw": false,
-        "semicolon": false
+        "semi": false
     },
     "jsRules": {
         "max-line-length": {
