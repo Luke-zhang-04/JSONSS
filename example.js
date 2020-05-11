@@ -22,7 +22,7 @@ const white = "#fff"
 const blue = "rgba(0, 0, 200, 1)"
 const red = "red"
 const green = "#0f0"
-const theme_colours = {
+const themeColours = {
     white: white,
     blue: blue,
     red: red,
@@ -31,7 +31,7 @@ const theme_colours = {
 
 function jumbotrons() {
     const jumbotrons = {}
-    for (let [key, value] of Object.entries(theme_colours)) {
+    for (let [key, value] of Object.entries(themeColours)) {
         jumbotrons[`.jumbotron_${key}`] = {
             border_radius: "5px",
             background_color: value,
@@ -46,7 +46,7 @@ function jumbotrons() {
 
 function buttons() {
     const buttons = {}
-    for (let [key, value] of Object.entries(theme_colours)) {
+    for (let [key, value] of Object.entries(themeColours)) {
         buttons[`.btn_${key}`] = {
             color: "#000",
             background_color: value

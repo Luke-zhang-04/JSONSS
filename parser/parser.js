@@ -26,30 +26,35 @@ function parseJsonss(styles, pretty, debug) {
     var output = "";
     for (var _i = 0, _a = Object.entries(styles); _i < _a.length; _i++) {
         var _b = _a[_i], key = _b[0], value = _b[1];
-        if (debug)
+        if (debug) {
             console.log("🔎 parsing", key, "=", value);
+        }
         var val = void 0;
         if (pretty) {
-            if (debug)
+            if (debug) {
                 console.log("…formatting", value, "pretty print =", true);
+            }
             val = formatComma(JSON.stringify(value)
                 .replace(/_/g, "-")
                 .replace(/"/g, "")
                 .replace(/{/g, "")
                 .replace(/}/g, ""));
             output += key.replace(/_/g, "-") + " {\n  " + val + "\n}\n\n";
-            if (debug)
+            if (debug) {
                 console.log("✔formatted", key.replace(/_/g, "-") + " {" + val.replace(/\n/g, "") + "}");
+            }
         }
         else {
-            if (debug)
+            if (debug) {
                 console.log("…formatting", value, "pretty print = ", false);
+            }
             val = formatComma(JSON.stringify(value)
                 .replace(/_/g, "-")
                 .replace(/"/g, ""));
             output += key.replace("_", "-") + " " + val;
-            if (debug)
+            if (debug) {
                 console.log("✔ formatted", key.replace(/_/g, "-") + " {" + val.replace(/\n/g, "") + "}");
+            }
         }
     }
     return pretty ? output.slice(0, -1) : output + "\n";
