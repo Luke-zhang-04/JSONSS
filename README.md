@@ -1,5 +1,5 @@
 <div align="center" style="align: center">
-    <img alt="JSONSS logo" src="https://user-images.githubusercontent.com/55749227/81513244-ecc17b80-92f4-11ea-9a8b-6107d5879d9e.png" width="50%"/>
+    <img alt="JSONSS logo" src="https://lh5.googleusercontent.com/aCV3_cURuWgKXLQ1-hgrfXYo_zwcglw-L8x1UgzXg1OUOG23REoC3Ea-ERvFfDf0d9fQu04Tcjoo5_Tfs_aY=w1440-h775" width="50%"/>
 </div>
 
 ***
