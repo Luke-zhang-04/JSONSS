@@ -37,6 +37,10 @@ const format = (
     debug: boolean,
 ): string => {
 
+    if (debug){
+        console.log("\t\t\t🔎 formatting", key, value)
+    }
+
     if (pretty) {
         return `  ${key.replace(/_/g, "-")}: ${value.replace(/_/g, "-")};\n`
     } else {
@@ -57,6 +61,10 @@ export const formatProperties = (
     debug: boolean,
     history: string[] = [],
 ): string => {
+
+    if (debug) {
+        console.log("\t\t🔎 preparing to format", Object.entries(properties), "pretty =", pretty)
+    }
 
     let newValues = "" // new values
     let newKey = "" // new key with history

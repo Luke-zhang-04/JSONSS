@@ -35,6 +35,10 @@ export const parseJsonss = (
     let output = "" // final output
 
     for (const [key, value] of Object.entries(styles)) { // iterate through styles
+        if (debug) {
+            console.log("🤓 preparing to parse", key, value)
+        }
+
         // split properties and nested styles
         const properties: {[key: string]: string} = {}
         const objects: {[key: string]: {}} = {}
@@ -51,12 +55,20 @@ export const parseJsonss = (
                 throw `Cannot have typeof ${typeof(value2)} as value in JSONSS`
             }
         }
-
+        
+        if (debug) {
+            console.log("\t🤓 parsing properties", properties)
+        }
+        
         // format properties
         if (Object.keys(properties).length > 0) {
             output += formatProperties(properties, pretty, debug, history)
         }
         
+        if (debug) {
+            console.log("\t😩 parsing nested classes", Object.keys(objects))
+        }
+
         // recurse for nested styles
         if (Object.keys(objects).length > 0) {
             output += parseJsonss(objects, pretty, debug, history)

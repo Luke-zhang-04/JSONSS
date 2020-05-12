@@ -4,6 +4,9 @@ const formatter_1 = require("./formatter");
 exports.parseJsonss = (styles, pretty, debug, history = []) => {
     let output = "";
     for (const [key, value] of Object.entries(styles)) {
+        if (debug) {
+            console.log("🤓 preparing to parse", key, value);
+        }
         const properties = {};
         const objects = {};
         history.push(key);
@@ -18,8 +21,14 @@ exports.parseJsonss = (styles, pretty, debug, history = []) => {
                 throw `Cannot have typeof ${typeof (value2)} as value in JSONSS`;
             }
         }
+        if (debug) {
+            console.log("\t🤓 parsing properties", properties);
+        }
         if (Object.keys(properties).length > 0) {
             output += formatter_1.formatProperties(properties, pretty, debug, history);
+        }
+        if (debug) {
+            console.log("\t😩 parsing nested classes", Object.keys(objects));
         }
         if (Object.keys(objects).length > 0) {
             output += exports.parseJsonss(objects, pretty, debug, history);
