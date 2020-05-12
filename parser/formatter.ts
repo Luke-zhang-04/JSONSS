@@ -21,39 +21,44 @@
  *
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
-*/
+*/ 
 
-import { parseJsonss as parser } from "./parser"; 
+const format = (
+    key: string,
+    value: string,
+    pretty: boolean,
+    debug: boolean
+): string => {
+    let output = ""
 
-/**
- * @param {object} input - JSON object with CSS properties
- * @param {boolean} pretty - pretty print or not
- * @param {boolean} debug - should console output logs
- * @returns {string} returns a string with newlines and tabs
- */
-export const formatComma = (input: any, pretty: boolean, debug: boolean, history: string[] = []): string => {
-    let output: {[key: string]: string | {}} = {}
+    if (pretty) {
+        return `  ${key.replace(/_/g, "-")}: ${value.replace(/_/g, "-")};\n`
+    } else {
+        return `${key.replace(/_/g, "-")}:${value.replace(/_/g, "-")};`
+    }
+}
 
-    for (const [key, value] of Object.entries(input)) {
-        if (typeof(value) === "string") {
-            if (pretty) {
-                output[`-*TAB*-${key}`] = `${value};-*NEWLINE*-`
-            } else {
-                output.key = `${value};`
-            }
-        } else if (typeof(value) === "object") {
-            console.log("FOUND OBJECT", key, value)
-        }
+export const formatProperties = (
+    properties: {[key: string]: string},
+    pretty: boolean,
+    debug: boolean,
+    history: string[] = []
+): string => {
+    console.log(properties, history)
+    let newValues = ""
+    let newKey = ""
+    
+    for (const i of history) {
+        newKey += `${i} `
     }
 
-    return (
-        pretty ?
-            JSON.stringify(output)
-                .replace(/,/g, "")
-                .replace(/-\*NEWLINE\*-/g, "\n")
-                .replace(/:/g, ": ")
-                .replace(/-\*TAB\*-/g, "\t")
-            : JSON.stringify(output)
-                .replace(/,/g, "")
-    );
+    for (const [key, value] of Object.entries(properties)) {
+        newValues += format(key, value, pretty, debug)
+    }
+
+    if (pretty) {
+        return `${newKey}{\n${newValues}}\n\n`
+    } else {
+        return `${newKey}{$newValues}`
+    }
 }

@@ -52,7 +52,7 @@ const write = () => {
     }
     const data = styles.jsonss();
     output += parser_1.parseJsonss(data, pretty, debug);
-    fs.writeFile("./" + args.out, output, "utf-8", (err) => {
+    fs.writeFile("./" + args.out, output.substr(0, output.length - 1), "utf-8", (err) => {
         if (err) {
             throw err;
         }

@@ -4,34 +4,30 @@ const formatter_1 = require("./formatter");
 exports.parseJsonss = (styles, pretty, debug, history = []) => {
     let output = "";
     for (const [key, value] of Object.entries(styles)) {
-        if (debug) {
-            console.log("🔎 parsing", key, "=", value);
-        }
-        let val;
-        if (pretty) {
-            if (debug) {
-                console.log("…formatting", value, "pretty print =", true);
+        const properties = {};
+        const objects = {};
+        history.push(key);
+        for (const [key2, value2] of Object.entries(value)) {
+            if (typeof (value2) === "string") {
+                properties[key2] = value2;
             }
-            val = formatter_1.formatComma(value, pretty, debug)
-                .replace(/_/g, "-")
-                .replace(/"/g, "")
-                .replace(/{/g, "")
-                .replace(/}/g, "");
-            output += `${key.replace(/_/g, "-")} {\n${val}}\n\n`;
-        }
-        else {
-            if (debug) {
-                console.log("…formatting", value, "pretty print = ", false);
+            else if (typeof (value2) === "object") {
+                objects[key2] = value2;
             }
-            val = formatter_1.formatComma(value, pretty, debug)
-                .replace(/_/g, "-")
-                .replace(/"/g, "");
-            output += `${key.replace(/_/g, "-")} ${val}`;
+            else {
+                throw `Cannot have typeof ${typeof (value2)} as value in JSONSS`;
+            }
         }
-        if (debug) {
-            console.log("✔ formatted", `${key.replace(/_/g, "-")} {${val.replace(/\n/g, "")}}`);
+        if (Object.keys(properties).length > 0) {
+            output += formatter_1.formatProperties(properties, pretty, debug, history);
+        }
+        if (Object.keys(objects).length > 0) {
+            output += exports.parseJsonss(objects, pretty, debug, history);
+        }
+        if (history.length > 0) {
+            history.pop();
         }
     }
-    return pretty ? output.slice(0, -1) : output + "\n";
+    return output;
 };
 //# sourceMappingURL=parser.js.map
