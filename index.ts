@@ -66,8 +66,15 @@ const write = (): number | void => {
     let styles // input file
 
     if (args.in) { // check for input file
-        // styles = require(`./${args.path}/${args.in}`)
-        styles = require("./" + args.in)
+        try {
+            styles = require("../../" + args.in)
+        } catch {
+            try {
+                styles = require("../" + args.in)
+            } catch {
+                styles = require ("./" + args.in)
+            }
+        }
     } else {
         throw "Missing parameter for input file 👀"
     }

@@ -1,10 +1,10 @@
 {
   "name": "jsonss",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "JavaScript Object Notated Style Sheets",
   "main": "index.js",
   "scripts": {
-    "test": "/Users/lukezhang/Documents/jsonss/node_modules/.bin/tsc -p /Users/lukezhang/Documents/jsonss/tsconfig.json\nnode . example/example.js example/styles.css -p -d"
+    "test": "node . example/example.js example/styles.css -p -d"
   },
   "repository": {
     "type": "git",
