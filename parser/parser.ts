@@ -19,20 +19,29 @@
 */
 import { formatProperties } from "./formatter";
 
+/**
+ * Turns JSONSS into CSS
+ * @param {{[key: string]: string | {}}} styles - JSONSS of styles
+ * @param {bool} pretty - pretty print or not
+ * @param {bool} debug - show debug logs or not
+ * @param {arr} history - history of names
+ */
 export const parseJsonss = (
     styles: {},
     pretty: boolean,
     debug: boolean,
-    history: string[] = []
+    history: string[] = [],
 ): string => {
-    let output = ""
+    let output = "" // final output
 
-    for (const [key, value] of Object.entries(styles)) {
+    for (const [key, value] of Object.entries(styles)) { // iterate through styles
+        // split properties and nested styles
         const properties: {[key: string]: string} = {}
         const objects: {[key: string]: {}} = {}
 
-        history.push(key)
+        history.push(key) // add current key to history
         
+        // split properties and nested styles
         for (const [key2, value2] of Object.entries(value)) {
             if (typeof(value2) === "string") {
                 properties[key2] = value2
@@ -43,14 +52,17 @@ export const parseJsonss = (
             }
         }
 
+        // format properties
         if (Object.keys(properties).length > 0) {
             output += formatProperties(properties, pretty, debug, history)
         }
         
+        // recurse for nested styles
         if (Object.keys(objects).length > 0) {
             output += parseJsonss(objects, pretty, debug, history)
         }
 
+        //remote latest history
         if (history.length > 0) {
             history.pop()
         }

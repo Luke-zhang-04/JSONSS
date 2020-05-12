@@ -23,13 +23,19 @@
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */ 
 
+/**
+ * format a property
+ * @param {str} key - key of property
+ * @param {str} value - value of property
+ * @param {bool} pretty - pretty print or not
+ * @param {bool} debug - show debug logs or not
+ */
 const format = (
     key: string,
     value: string,
     pretty: boolean,
-    debug: boolean
+    debug: boolean,
 ): string => {
-    let output = ""
 
     if (pretty) {
         return `  ${key.replace(/_/g, "-")}: ${value.replace(/_/g, "-")};\n`
@@ -38,25 +44,32 @@ const format = (
     }
 }
 
+/**
+ * formats properties with proper key
+ * @param {{[key: string]: string}} properties - properties to format
+ * @param {bool} pretty - pretty print or not
+ * @param {bool} debug - show debug logs or not
+ * @param {arr} history - history of names
+ */
 export const formatProperties = (
     properties: {[key: string]: string},
     pretty: boolean,
     debug: boolean,
-    history: string[] = []
+    history: string[] = [],
 ): string => {
-    console.log(properties, history)
-    let newValues = ""
-    let newKey = ""
+
+    let newValues = "" // new values
+    let newKey = "" // new key with history
     
-    for (const i of history) {
+    for (const i of history) { // add history to key
         newKey += `${i} `
     }
 
-    for (const [key, value] of Object.entries(properties)) {
+    for (const [key, value] of Object.entries(properties)) { // format property
         newValues += format(key, value, pretty, debug)
     }
 
-    if (pretty) {
+    if (pretty) { // return result
         return `${newKey}{\n${newValues}}\n\n`
     } else {
         return `${newKey}{$newValues}`
