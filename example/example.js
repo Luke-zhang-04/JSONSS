@@ -44,6 +44,13 @@ const containers = () => {
             "a:hover": {
                 color: white,
                 text_decoration: "underline"
+            },
+            ".my-werid-nested-class": {
+                color: value,
+                ".my-other-nested-class": {
+                    color: value,
+                    "font-size": "3px"
+                }
             }
         }
     }
@@ -65,10 +72,10 @@ const jsonss = () => {
     return {
         body: {
             color: white,
-            background_color: blue
+    background_color: blue
         },
         ...buttons(),
-        ...containers()
+        ...containers(),
     }
 }
 

@@ -43,6 +43,15 @@ body {
   text-decoration: underline;
 }
 
+.container-white .my-werid-nested-class {
+  color: #fff;
+}
+
+.container-white .my-werid-nested-class .my-other-nested-class {
+  color: #fff;
+  font-size: 3px;
+}
+
 .container-blue {
   border-radius: 5px;
   background-color: rgba(0, 0, 200, 1);
@@ -56,6 +65,15 @@ body {
 .container-blue a:hover {
   color: #fff;
   text-decoration: underline;
+}
+
+.container-blue .my-werid-nested-class {
+  color: rgba(0, 0, 200, 1);
+}
+
+.container-blue .my-werid-nested-class .my-other-nested-class {
+  color: rgba(0, 0, 200, 1);
+  font-size: 3px;
 }
 
 .container-red {
@@ -73,6 +91,15 @@ body {
   text-decoration: underline;
 }
 
+.container-red .my-werid-nested-class {
+  color: red;
+}
+
+.container-red .my-werid-nested-class .my-other-nested-class {
+  color: red;
+  font-size: 3px;
+}
+
 .container-green {
   border-radius: 5px;
   background-color: #0f0;
@@ -88,6 +115,15 @@ body {
   text-decoration: underline;
 }
 
+.container-green .my-werid-nested-class {
+  color: #0f0;
+}
+
+.container-green .my-werid-nested-class .my-other-nested-class {
+  color: #0f0;
+  font-size: 3px;
+}
+
 .container-none {
   border-radius: 5px;
   background-color: rgba(0, 0, 0, 0);
@@ -101,4 +137,13 @@ body {
 .container-none a:hover {
   color: #fff;
   text-decoration: underline;
+}
+
+.container-none .my-werid-nested-class {
+  color: rgba(0, 0, 0, 0);
+}
+
+.container-none .my-werid-nested-class .my-other-nested-class {
+  color: rgba(0, 0, 0, 0);
+  font-size: 3px;
 }
