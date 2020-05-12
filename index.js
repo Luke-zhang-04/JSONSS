@@ -42,7 +42,17 @@ const write = () => {
     let output = "";
     let styles;
     if (args.in) {
-        styles = require("./" + args.in);
+        try {
+            styles = require("../../" + args.in);
+        }
+        catch {
+            try {
+                styles = require("../" + args.in);
+            }
+            catch {
+                styles = require("./" + args.in);
+            }
+        }
     }
     else {
         throw "Missing parameter for input file 👀";

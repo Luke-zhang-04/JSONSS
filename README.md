@@ -12,7 +12,7 @@
 <p align="center">
     <a href="https://github.com/Luke-zhang-04/JSONSS/blob/master/LICENSE"><img alt="Github License" src="https://img.shields.io/github/license/luke-zhang-04/JSONSS?logo=gnu"/></a>
     <a href="https://www.npmjs.com/package/jsonss"><img alt="NPM version" src="https://img.shields.io/npm/v/jsonss?logo=npm"/></a>
-    <a href="https://www.npmjs.com/package/jsonss"><img alt="Github Releases" src="https://img.shields.io/github/v/release/luke-zhang-04/JSONSS"/></a>
+    <a href="https://github.com/Luke-zhang-04/JSONSS/releases"><img alt="Github Releases" src="https://img.shields.io/github/v/release/luke-zhang-04/JSONSS"/></a>
     <a href="https://www.npmjs.com/package/jsonss"><img alt="NPM downloads" src="https://img.shields.io/npm/dt/jsonss?logo=npm"/></a>
     <a href=""><img alt="Github workflow status" src="https://img.shields.io/github/workflow/status/luke-zhang-04/jsonss/Node.js CI?logo=node.js"/></a>
     <a href="https://github.com/Luke-zhang-04/JSONSS/actions?query=workflow%3Atsint"><img alt="workflow status" src="https://img.shields.io/github/workflow/status/Luke-zhang-04/jsonss/tslint?label=TSLint&logo=typescript"/></a>
