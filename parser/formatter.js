@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const format = (key, value, pretty, debug) => {
-    let output = "";
     if (pretty) {
         return `  ${key.replace(/_/g, "-")}: ${value.replace(/_/g, "-")};\n`;
     }
@@ -10,7 +9,6 @@ const format = (key, value, pretty, debug) => {
     }
 };
 exports.formatProperties = (properties, pretty, debug, history = []) => {
-    console.log(properties, history);
     let newValues = "";
     let newKey = "";
     for (const i of history) {
@@ -23,7 +21,7 @@ exports.formatProperties = (properties, pretty, debug, history = []) => {
         return `${newKey}{\n${newValues}}\n\n`;
     }
     else {
-        return `${newKey}{$newValues}`;
+        return `${newKey}{${newValues}}`;
     }
 };
 //# sourceMappingURL=formatter.js.map

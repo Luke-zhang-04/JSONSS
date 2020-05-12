@@ -72,6 +72,6 @@ export const formatProperties = (
     if (pretty) { // return result
         return `${newKey}{\n${newValues}}\n\n`
     } else {
-        return `${newKey}{$newValues}`
+        return `${newKey}{${newValues}}`
     }
 }

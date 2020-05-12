@@ -82,10 +82,14 @@ const write = (): number | void => {
 
     output += parser(data, pretty, debug) // parse JSON object
 
+    if (pretty) {
+        output = output.substr(0, output.length - 1)
+    }
+
     // write output to output file
     fs.writeFile(
         `./${args.out}`,
-        output.substr(0, output.length - 1),
+        output,
         "utf-8",
     (err: unknown) => {
         if (err) {
