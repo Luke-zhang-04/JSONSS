@@ -21,39 +21,65 @@
  *
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
-*/
-
-import { parseJsonss as parser } from "./parser"; 
+*/ 
 
 /**
- * @param {object} input - JSON object with CSS properties
- * @param {boolean} pretty - pretty print or not
- * @param {boolean} debug - should console output logs
- * @returns {string} returns a string with newlines and tabs
+ * format a property
+ * @param {str} key - key of property
+ * @param {str} value - value of property
+ * @param {bool} pretty - pretty print or not
+ * @param {bool} debug - show debug logs or not
  */
-export const formatComma = (input: any, pretty: boolean, debug: boolean, history: string[] = []): string => {
-    let output: {[key: string]: string | {}} = {}
+const format = (
+    key: string,
+    value: string,
+    pretty: boolean,
+    debug: boolean,
+): string => {
 
-    for (const [key, value] of Object.entries(input)) {
-        if (typeof(value) === "string") {
-            if (pretty) {
-                output[`-*TAB*-${key}`] = `${value};-*NEWLINE*-`
-            } else {
-                output.key = `${value};`
-            }
-        } else if (typeof(value) === "object") {
-            console.log("FOUND OBJECT", key, value)
-        }
+    if (debug){
+        console.log("\t\t\t🔎 formatting", key, value)
     }
 
-    return (
-        pretty ?
-            JSON.stringify(output)
-                .replace(/,/g, "")
-                .replace(/-\*NEWLINE\*-/g, "\n")
-                .replace(/:/g, ": ")
-                .replace(/-\*TAB\*-/g, "\t")
-            : JSON.stringify(output)
-                .replace(/,/g, "")
-    );
+    if (pretty) {
+        return `  ${key.replace(/_/g, "-")}: ${value.replace(/_/g, "-")};\n`
+    } else {
+        return `${key.replace(/_/g, "-")}:${value.replace(/_/g, "-")};`
+    }
+}
+
+/**
+ * formats properties with proper key
+ * @param {{[key: string]: string}} properties - properties to format
+ * @param {bool} pretty - pretty print or not
+ * @param {bool} debug - show debug logs or not
+ * @param {arr} history - history of names
+ */
+export const formatProperties = (
+    properties: {[key: string]: string},
+    pretty: boolean,
+    debug: boolean,
+    history: string[] = [],
+): string => {
+
+    if (debug) {
+        console.log("\t\t🔎 preparing to format", Object.entries(properties), "pretty =", pretty)
+    }
+
+    let newValues = "" // new values
+    let newKey = "" // new key with history
+    
+    for (const i of history) { // add history to key
+        newKey += `${i} `
+    }
+
+    for (const [key, value] of Object.entries(properties)) { // format property
+        newValues += format(key, value, pretty, debug)
+    }
+
+    if (pretty) { // return result
+        return `${newKey}{\n${newValues}}\n\n`
+    } else {
+        return `${newKey}{${newValues}}`
+    }
 }

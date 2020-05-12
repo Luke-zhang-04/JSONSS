@@ -17,52 +17,67 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
-import { formatComma } from "./formatter";
+import { formatProperties } from "./formatter";
 
 /**
- * @param {object} styles - JSON object with CSS properties
- * @param {boolean} pretty - pretty print or not
- * @param {boolean} debug - debug or not
- * @returns {string} parsed JSONSS string, ready to be written to CSS or SCSS file
+ * Turns JSONSS into CSS
+ * @param {{[key: string]: string | {}}} styles - JSONSS of styles
+ * @param {bool} pretty - pretty print or not
+ * @param {bool} debug - show debug logs or not
+ * @param {arr} history - history of names
  */
-export const parseJsonss = (styles: {}, pretty: boolean, debug: boolean, history: string[] = []): string => {
-    let output = ""
-    for (const [key, value] of Object.entries(styles)) { // iterate through object
-        if (debug) {console.log("🔎 parsing", key, "=", value)}
+export const parseJsonss = (
+    styles: {},
+    pretty: boolean,
+    debug: boolean,
+    history: string[] = [],
+): string => {
+    let output = "" // final output
 
-        let val: string
-
-        if (pretty) { // pretty print
-            if (debug) {
-                console.log("…formatting", value, "pretty print =", true)
-            }
-
-            val = formatComma (value, pretty, debug) // format commas with new lines and semicolons
-                .replace(/_/g, "-") // replace underscores with dashes
-                .replace(/"/g, "") // remove quotes
-                .replace(/{/g, "") // remove braces (handled with pretty)
-                .replace(/}/g, "")
-
-            output += `${key.replace(/_/g, "-")} {\n${val}}\n\n` //insert new
-
-        } else { //don't pretty print
-            if (debug) {
-                console.log("…formatting", value, "pretty print = ", false)
-            }
-
-            val = formatComma (value, pretty, debug) //format commas with semicolons
-                .replace(/_/g, "-") // replace underscores with dashes
-                .replace(/"/g, "") //remove quotes
-
-            output += `${key.replace(/_/g, "-")} ${val}` //insert new
-
-        }
+    for (const [key, value] of Object.entries(styles)) { // iterate through styles
         if (debug) {
-            console.log(
-                "✔ formatted",
-                `${key.replace(/_/g, "-")} {${val.replace(/\n/g, "")}}`,
-            )
+            console.log("🤓 preparing to parse", key, value)
+        }
+
+        // split properties and nested styles
+        const properties: {[key: string]: string} = {}
+        const objects: {[key: string]: {}} = {}
+
+        history.push(key) // add current key to history
+        
+        // split properties and nested styles
+        for (const [key2, value2] of Object.entries(value)) {
+            if (typeof(value2) === "string") {
+                properties[key2] = value2
+            } else if (typeof(value2) === "object") {
+                objects[key2] = value2
+            } else {
+                throw `Cannot have typeof ${typeof(value2)} as value in JSONSS`
+            }
+        }
+        
+        if (debug) {
+            console.log("\t🤓 parsing properties", properties)
+        }
+        
+        // format properties
+        if (Object.keys(properties).length > 0) {
+            output += formatProperties(properties, pretty, debug, history)
+        }
+        
+        if (debug) {
+            console.log("\t😩 parsing nested classes", Object.keys(objects))
+        }
+
+        // recurse for nested styles
+        if (Object.keys(objects).length > 0) {
+            output += parseJsonss(objects, pretty, debug, history)
+        }
+
+        //remote latest history
+        if (history.length > 0) {
+            history.pop()
         }
     }
-    return pretty ? output.slice(0, -1) : output + "\n" //if pretty strip extra newline at end
+    return output
 }
