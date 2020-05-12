@@ -40,6 +40,10 @@ const containers = () => {
             a: {
                 color: blue,
                 text_decoration: "none"
+            },
+            "a:hover": {
+                color: white,
+                text_decoration: "underline"
             }
         }
     }

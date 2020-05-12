@@ -38,6 +38,11 @@ body {
   text-decoration: none;
 }
 
+.container-white a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
 .container-blue {
   border-radius: 5px;
   background-color: rgba(0, 0, 200, 1);
@@ -46,6 +51,11 @@ body {
 .container-blue a {
   color: rgba(0, 0, 200, 1);
   text-decoration: none;
+}
+
+.container-blue a:hover {
+  color: #fff;
+  text-decoration: underline;
 }
 
 .container-red {
@@ -58,6 +68,11 @@ body {
   text-decoration: none;
 }
 
+.container-red a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
 .container-green {
   border-radius: 5px;
   background-color: #0f0;
@@ -68,6 +83,11 @@ body {
   text-decoration: none;
 }
 
+.container-green a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
 .container-none {
   border-radius: 5px;
   background-color: rgba(0, 0, 0, 0);
@@ -76,4 +96,9 @@ body {
 .container-none a {
   color: rgba(0, 0, 200, 1);
   text-decoration: none;
+}
+
+.container-none a:hover {
+  color: #fff;
+  text-decoration: underline;
 }
