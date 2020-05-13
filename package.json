@@ -4,7 +4,7 @@
   "description": "JavaScript Object Notated Style Sheets",
   "main": "index.js",
   "scripts": {
-    "test": "node . example/example.js example/styles.css -d"
+    "test": "node . example/example.js example/styles.css -p -d"
   },
   "repository": {
     "type": "git",
