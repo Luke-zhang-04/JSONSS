@@ -82,13 +82,25 @@ const jsonss = () => {
         ...containers(),
         ".class1": {
             ".class2": {
-                "a, p": {
+                "a, p, li": {
                     ".class3": {
                         text_align: "center",
                     },
                 },
             },
         },
+        div: {
+            article: {
+                "a, p, li": {
+                    section: {
+                        position: "relative",
+                    },
+                },
+            },
+        },
+        "b, strong": {
+            font_weight: "bolder",
+        }
     }
 }
 

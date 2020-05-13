@@ -23,86 +23,12 @@
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */ 
 
-/**
- * format a property
- * @param {str} key - key of property
- * @param {str} value - value of property
- * @param {bool} pretty - pretty print or not
- * @param {bool} debug - show debug logs or not
- */
-const format = (
-    key: string,
-    value: string,
-    pretty: boolean,
-    debug: boolean,
-): string => {
-
-    if (debug){
-        console.log("\t\t\t🔎 formatting", key, value)
-    }
-
-    if (pretty) {
-        return `  ${key.replace(/_/g, "-")}: ${value.replace(/_/g, "-")};\n`
-    } else {
-        return `${key.replace(/_/g, "-")}:${value.replace(/_/g, "-")};`
-    }
-}
-
-/**
- * 
- * @param {string[]} branches - branches
- * @param {string[]} variables - new variables to distribute
- */
-const getBranches = (branches: string[], variables: string[]): string[] => {
-    const newBranches = []
-
-    for (const branch of branches) {
-        for (const variable of variables) {
-            newBranches.push(`${branch} ${variable}`)
-        }
-    }
-
-    return newBranches
-}
-
-/**
- * returns true if there is a comma
- * @param {string[]} arr 
- */
-const checkComma = (arr: string[]): boolean => {
-    for (const i of arr) {
-        if (i.includes(",")) {
-            return true
-        }
-    }
-    return false
-}
-
-/**
- * Foormatts keys with commas
- * @param {string[]} keys - keys which need formatting
- */
-const formatKey = (keys: string[]): string => {
-    let newKey = ""
-    let branches: string[] = [""]
-
-    for (const i of keys) {
-        if (i.includes(",")) {
-            branches = getBranches(branches, i.split(","))
-        } else {
-            for (let index = 0; index < branches.length; index++) {
-                if (index === 0) {
-                    branches[index] += `${i} `
-                } else {
-                    branches[index] += ` ${i} `
-                }
-            }
-        }
-    }
-
-    newKey = branches.join(",").replace(/ {2}/g, " ").replace(/ {2}/g, " ")
-    return newKey
-}
+import {
+    format,
+    checkComma,
+    formatKey,
+    auditIndents,
+} from "./functions";
 
 /**
  * formats properties with proper key
@@ -139,7 +65,7 @@ export const formatProperties = (
     }
 
     if (pretty) { // return result
-        return `${newKey.replace(/,/g, ",\n")}{\n${newValues.replace(/_/g, "-")}}\n\n`
+        return `${auditIndents(newKey.replace(/,/g, ",\n"))}{\n${newValues.replace(/_/g, "-")}}\n\n`
     } else {
         return `${newKey}{${newValues.replace(/_/g, "-")}}`
     }

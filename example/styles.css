@@ -178,7 +178,19 @@ body {
   font-size: 2rem;
 }
 
-.class1 .class2 a.class3 ,
-.class1 .class2 p .class3  {
+.class1 .class2 a .class3,
+.class1 .class2 p .class3,
+.class1 .class2 li .class3 {
   text-align: center;
+}
+
+div article a section,
+div article p section,
+div article li section {
+  position: relative;
+}
+
+b,
+strong {
+  font-weight: bolder;
 }
