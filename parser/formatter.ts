@@ -65,7 +65,7 @@ export const formatProperties = (
     }
 
     if (pretty) { // return result
-        return `${auditIndents(newKey.replace(/,/g, ",\n"))}{\n${newValues.replace(/_/g, "-")}}\n\n`
+        return `${auditIndents(newKey.replace(/,/g, ",\n").replace(/_/g, "-"))}{\n${newValues.replace(/_/g, "-")}}\n\n`
     } else {
         return `${newKey}{${newValues.replace(/_/g, "-")}}`
     }

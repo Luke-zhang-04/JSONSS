@@ -3,6 +3,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const formatter_1 = require("./formatter");
 exports.parseJsonss = (styles, pretty, debug, lint, history = []) => {
     let output = "";
+    for (const i of ["HEADER", "DOCSTRING"]) {
+        if (Object.keys(styles).includes(i) && history.length == 0) {
+            output += `/*\n${styles[i]}\n*/\n\n`;
+            delete styles[i];
+        }
+    }
     for (const [key, value] of Object.entries(styles)) {
         if (debug) {
             console.log("🤓 preparing to parse", key, value);
@@ -16,6 +22,9 @@ exports.parseJsonss = (styles, pretty, debug, lint, history = []) => {
             }
             else if (typeof (value2) === "object") {
                 objects[key2] = value2;
+            }
+            else if (typeof (value2) === "number") {
+                properties[key2] = value2.toString() + "rem";
             }
             else {
                 throw `Cannot have typeof ${typeof (value2)} as value in JSONSS`;

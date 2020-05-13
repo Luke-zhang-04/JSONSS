@@ -22,7 +22,7 @@ exports.formatProperties = (properties, pretty, debug, history = []) => {
         newValues += functions_1.format(key, value, pretty, debug);
     }
     if (pretty) {
-        return `${functions_1.auditIndents(newKey.replace(/,/g, ",\n"))}{\n${newValues.replace(/_/g, "-")}}\n\n`;
+        return `${functions_1.auditIndents(newKey.replace(/,/g, ",\n").replace(/_/g, "-"))}{\n${newValues.replace(/_/g, "-")}}\n\n`;
     }
     else {
         return `${newKey}{${newValues.replace(/_/g, "-")}}`;

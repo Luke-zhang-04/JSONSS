@@ -1,29 +1,48 @@
+/*
+  JSO-CSS; JavaScript Object Cascading Style Sheets
+  Copyright (C) 2020 Luke Zhang
+
+  https://luke-zhang-04.github.io
+
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+*/
+
 body {
   color: #fff;
   background-color: rgba(0, 0, 200, 1);
 }
 
-.btn_white {
+.btn-white {
   color: #000;
   background-color: #fff;
 }
 
-.btn_blue {
+.btn-blue {
   color: #000;
   background-color: rgba(0, 0, 200, 1);
 }
 
-.btn_red {
+.btn-red {
   color: #000;
   background-color: red;
 }
 
-.btn_green {
+.btn-green {
   color: #000;
   background-color: #0f0;
 }
 
-.btn_none {
+.btn-none {
   color: #000;
   background-color: rgba(0, 0, 0, 0);
 }

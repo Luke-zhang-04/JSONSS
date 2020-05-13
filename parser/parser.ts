@@ -27,13 +27,20 @@ import { formatProperties } from "./formatter";
  * @param {arr} history - history of names
  */
 export const parseJsonss = (
-    styles: {},
+    styles: {[key: string]: string | number | {}},
     pretty: boolean,
     debug: boolean,
     lint: boolean,
     history: string[] = [],
 ): string => {
     let output = "" // final output
+
+    for (const i of ["HEADER", "DOCSTRING"]) {
+        if (Object.keys(styles).includes(i) && history.length == 0) {
+            output += `/*\n${styles[i]}\n*/\n\n`
+            delete styles[i] 
+        }
+    }
 
     for (const [key, value] of Object.entries(styles)) { // iterate through styles
         if (debug) {
@@ -52,6 +59,8 @@ export const parseJsonss = (
                 properties[key2] = value2
             } else if (typeof(value2) === "object") {
                 objects[key2] = value2
+            } else if (typeof(value2) === "number") {
+                properties[key2] = value2.toString() + "rem"
             } else {
                 throw `Cannot have typeof ${typeof(value2)} as value in JSONSS`
             }
