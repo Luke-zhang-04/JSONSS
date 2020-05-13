@@ -76,10 +76,19 @@ const jsonss = () => {
     return {
         body: {
             color: white,
-    background_color: blue
+            background_color: blue
         },
         ...buttons(),
         ...containers(),
+        ".class1": {
+            ".class2": {
+                "a, p, e": {
+                    ".class3" {
+                        ree: "ree"
+                    }
+                }
+            }
+        },
     }
 }
 
