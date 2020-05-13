@@ -21,13 +21,13 @@ exports.parseJsonss = (styles, pretty, debug, history = []) => {
                 throw `Cannot have typeof ${typeof (value2)} as value in JSONSS`;
             }
         }
-        if (debug) {
+        if (debug && Object.keys(properties).length > 0) {
             console.log("\t🤓 parsing properties", properties);
         }
         if (Object.keys(properties).length > 0) {
             output += formatter_1.formatProperties(properties, pretty, debug, history);
         }
-        if (debug) {
+        if (debug && Object.keys(objects).length > 0) {
             console.log("\t😩 parsing nested classes", Object.keys(objects));
         }
         if (Object.keys(objects).length > 0) {

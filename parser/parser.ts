@@ -56,7 +56,7 @@ export const parseJsonss = (
             }
         }
         
-        if (debug) {
+        if (debug && Object.keys(properties).length > 0) {
             console.log("\t🤓 parsing properties", properties)
         }
         
@@ -65,7 +65,7 @@ export const parseJsonss = (
             output += formatProperties(properties, pretty, debug, history)
         }
         
-        if (debug) {
+        if (debug && Object.keys(objects).length > 0) {
             console.log("\t😩 parsing nested classes", Object.keys(objects))
         }
 
