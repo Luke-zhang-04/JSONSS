@@ -52,8 +52,8 @@ body {
   font-size: 3px;
 }
 
-.container-white a,
-.container-white p {
+ .container-white a,
+ .container-white p {
   font-family: monospace;
   font-size: 2rem;
 }
@@ -82,8 +82,8 @@ body {
   font-size: 3px;
 }
 
-.container-blue a,
-.container-blue p {
+ .container-blue a,
+ .container-blue p {
   font-family: monospace;
   font-size: 2rem;
 }
@@ -112,8 +112,8 @@ body {
   font-size: 3px;
 }
 
-.container-red a,
-.container-red p {
+ .container-red a,
+ .container-red p {
   font-family: monospace;
   font-size: 2rem;
 }
@@ -142,8 +142,8 @@ body {
   font-size: 3px;
 }
 
-.container-green a,
-.container-green p {
+ .container-green a,
+ .container-green p {
   font-family: monospace;
   font-size: 2rem;
 }
@@ -172,8 +172,13 @@ body {
   font-size: 3px;
 }
 
-.container-none a,
-.container-none p {
+ .container-none a,
+ .container-none p {
   font-family: monospace;
   font-size: 2rem;
+}
+
+ .class1 .class2 a .class3 ,
+ .class1 .class2 p .class3  {
+  text-align: center;
 }

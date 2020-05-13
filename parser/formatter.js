@@ -15,7 +15,7 @@ const getBranches = (branches, variables) => {
     let newBranches = [];
     for (const branch of branches) {
         for (const variable of variables) {
-            newBranches.push(`${branch.replace(/ /g, "")} ${variable.replace(/ /g, "")}`);
+            newBranches.push(`${branch} ${variable}`);
         }
     }
     return newBranches;
@@ -37,11 +37,11 @@ const formatKey = (keys) => {
         }
         else {
             for (let index = 0; index < branches.length; index++) {
-                branches[index] += `${i} `;
+                branches[index] += ` ${i} `;
             }
         }
     }
-    newKey = branches.join(",");
+    newKey = branches.join(",").replace(/  /g, " ").replace(/  /g, " ");
     return newKey;
 };
 exports.formatProperties = (properties, pretty, debug, history = []) => {

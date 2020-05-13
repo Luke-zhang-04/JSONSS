@@ -59,7 +59,7 @@ const getBranches = (branches: string[], variables: string[]): string[] => {
 
     for (const branch of branches) {
         for (const variable of variables) {
-            newBranches.push(`${branch.replace(/ /g, "")} ${variable.replace(/ /g, "")}`)
+            newBranches.push(`${branch} ${variable}`)
         }
     }
 
@@ -88,12 +88,12 @@ const formatKey = (keys: string[]): string => {
             branches = getBranches(branches, i.split(","))
         } else {
             for (let index = 0; index < branches.length; index++) {
-                branches[index] += `${i} `
+                branches[index] += ` ${i} `
             }
         }
     }
 
-    newKey = branches.join(",")
+    newKey = branches.join(",").replace(/  /g, " ").replace(/  /g, " ")
     return newKey
 }
 
