@@ -37,7 +37,12 @@ const formatKey = (keys) => {
         }
         else {
             for (let index = 0; index < branches.length; index++) {
-                branches[index] += ` ${i} `;
+                if (index == 0) {
+                    branches[index] += `${i} `;
+                }
+                else {
+                    branches[index] += ` ${i} `;
+                }
             }
         }
     }

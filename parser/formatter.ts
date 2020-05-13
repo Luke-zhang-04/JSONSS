@@ -79,6 +79,10 @@ const checkComma = (arr: string[]): boolean => {
     return false
 }
 
+/**
+ * Foormatts keys with commas
+ * @param {string[]} keys - keys which need formatting
+ */
 const formatKey = (keys: string[]): string => {
     let newKey = ""
     let branches: string[] = [""]
@@ -88,7 +92,11 @@ const formatKey = (keys: string[]): string => {
             branches = getBranches(branches, i.split(","))
         } else {
             for (let index = 0; index < branches.length; index++) {
-                branches[index] += ` ${i} `
+                if (index == 0) {
+                    branches[index] += `${i} `
+                } else {
+                    branches[index] += ` ${i} `
+                }
             }
         }
     }
