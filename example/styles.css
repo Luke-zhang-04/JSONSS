@@ -1,1 +1,184 @@
-body {color:#fff;background-color:rgba(0, 0, 200, 1);}.btn_white {color:#000;background-color:#fff;}.btn_blue {color:#000;background-color:rgba(0, 0, 200, 1);}.btn_red {color:#000;background-color:red;}.btn_green {color:#000;background-color:#0f0;}.btn_none {color:#000;background-color:rgba(0, 0, 0, 0);}.container-white {border-radius:5px;background-color:#fff;}.container-white a {color:rgba(0, 0, 200, 1);text-decoration:none;}.container-white a:hover {color:#fff;text-decoration:underline;}.container-white .my-werid-nested-class {color:#fff;}.container-white .my-werid-nested-class .my-other-nested-class {color:#fff;font-size:3px;} .container-white a, .container-white p{font-family:monospace;font-size:2rem;}.container-blue {border-radius:5px;background-color:rgba(0, 0, 200, 1);}.container-blue a {color:rgba(0, 0, 200, 1);text-decoration:none;}.container-blue a:hover {color:#fff;text-decoration:underline;}.container-blue .my-werid-nested-class {color:rgba(0, 0, 200, 1);}.container-blue .my-werid-nested-class .my-other-nested-class {color:rgba(0, 0, 200, 1);font-size:3px;} .container-blue a, .container-blue p{font-family:monospace;font-size:2rem;}.container-red {border-radius:5px;background-color:red;}.container-red a {color:rgba(0, 0, 200, 1);text-decoration:none;}.container-red a:hover {color:#fff;text-decoration:underline;}.container-red .my-werid-nested-class {color:red;}.container-red .my-werid-nested-class .my-other-nested-class {color:red;font-size:3px;} .container-red a, .container-red p{font-family:monospace;font-size:2rem;}.container-green {border-radius:5px;background-color:#0f0;}.container-green a {color:rgba(0, 0, 200, 1);text-decoration:none;}.container-green a:hover {color:#fff;text-decoration:underline;}.container-green .my-werid-nested-class {color:#0f0;}.container-green .my-werid-nested-class .my-other-nested-class {color:#0f0;font-size:3px;} .container-green a, .container-green p{font-family:monospace;font-size:2rem;}.container-none {border-radius:5px;background-color:rgba(0, 0, 0, 0);}.container-none a {color:rgba(0, 0, 200, 1);text-decoration:none;}.container-none a:hover {color:#fff;text-decoration:underline;}.container-none .my-werid-nested-class {color:rgba(0, 0, 0, 0);}.container-none .my-werid-nested-class .my-other-nested-class {color:rgba(0, 0, 0, 0);font-size:3px;} .container-none a, .container-none p{font-family:monospace;font-size:2rem;} .class1 .class2 a .class3 , .class1 .class2 p .class3 {text-align:center;}
+body {
+  color: #fff;
+  background-color: rgba(0, 0, 200, 1);
+}
+
+.btn_white {
+  color: #000;
+  background-color: #fff;
+}
+
+.btn_blue {
+  color: #000;
+  background-color: rgba(0, 0, 200, 1);
+}
+
+.btn_red {
+  color: #000;
+  background-color: red;
+}
+
+.btn_green {
+  color: #000;
+  background-color: #0f0;
+}
+
+.btn_none {
+  color: #000;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.container-white {
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.container-white a {
+  color: rgba(0, 0, 200, 1);
+  text-decoration: none;
+}
+
+.container-white a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.container-white .my-werid-nested-class {
+  color: #fff;
+}
+
+.container-white .my-werid-nested-class .my-other-nested-class {
+  color: #fff;
+  font-size: 3px;
+}
+
+ .container-white a,
+ .container-white p {
+  font-family: monospace;
+  font-size: 2rem;
+}
+
+.container-blue {
+  border-radius: 5px;
+  background-color: rgba(0, 0, 200, 1);
+}
+
+.container-blue a {
+  color: rgba(0, 0, 200, 1);
+  text-decoration: none;
+}
+
+.container-blue a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.container-blue .my-werid-nested-class {
+  color: rgba(0, 0, 200, 1);
+}
+
+.container-blue .my-werid-nested-class .my-other-nested-class {
+  color: rgba(0, 0, 200, 1);
+  font-size: 3px;
+}
+
+ .container-blue a,
+ .container-blue p {
+  font-family: monospace;
+  font-size: 2rem;
+}
+
+.container-red {
+  border-radius: 5px;
+  background-color: red;
+}
+
+.container-red a {
+  color: rgba(0, 0, 200, 1);
+  text-decoration: none;
+}
+
+.container-red a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.container-red .my-werid-nested-class {
+  color: red;
+}
+
+.container-red .my-werid-nested-class .my-other-nested-class {
+  color: red;
+  font-size: 3px;
+}
+
+ .container-red a,
+ .container-red p {
+  font-family: monospace;
+  font-size: 2rem;
+}
+
+.container-green {
+  border-radius: 5px;
+  background-color: #0f0;
+}
+
+.container-green a {
+  color: rgba(0, 0, 200, 1);
+  text-decoration: none;
+}
+
+.container-green a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.container-green .my-werid-nested-class {
+  color: #0f0;
+}
+
+.container-green .my-werid-nested-class .my-other-nested-class {
+  color: #0f0;
+  font-size: 3px;
+}
+
+ .container-green a,
+ .container-green p {
+  font-family: monospace;
+  font-size: 2rem;
+}
+
+.container-none {
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.container-none a {
+  color: rgba(0, 0, 200, 1);
+  text-decoration: none;
+}
+
+.container-none a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.container-none .my-werid-nested-class {
+  color: rgba(0, 0, 0, 0);
+}
+
+.container-none .my-werid-nested-class .my-other-nested-class {
+  color: rgba(0, 0, 0, 0);
+  font-size: 3px;
+}
+
+ .container-none a,
+ .container-none p {
+  font-family: monospace;
+  font-size: 2rem;
+}
+
+ .class1 .class2 a .class3 ,
+ .class1 .class2 p .class3  {
+  text-align: center;
+}
