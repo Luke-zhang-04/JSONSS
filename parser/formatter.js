@@ -12,7 +12,7 @@ const format = (key, value, pretty, debug) => {
     }
 };
 const getBranches = (branches, variables) => {
-    let newBranches = [];
+    const newBranches = [];
     for (const branch of branches) {
         for (const variable of variables) {
             newBranches.push(`${branch} ${variable}`);
@@ -37,7 +37,7 @@ const formatKey = (keys) => {
         }
         else {
             for (let index = 0; index < branches.length; index++) {
-                if (index == 0) {
+                if (index === 0) {
                     branches[index] += `${i} `;
                 }
                 else {
@@ -46,7 +46,7 @@ const formatKey = (keys) => {
             }
         }
     }
-    newKey = branches.join(",").replace(/  /g, " ").replace(/  /g, " ");
+    newKey = branches.join(",").replace(/ {2}/g, " ").replace(/ {2}/g, " ");
     return newKey;
 };
 exports.formatProperties = (properties, pretty, debug, history = []) => {

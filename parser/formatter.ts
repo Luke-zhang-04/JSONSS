@@ -34,7 +34,7 @@ const format = (
     key: string,
     value: string,
     pretty: boolean,
-    debug: boolean
+    debug: boolean,
 ): string => {
 
     if (debug){
@@ -54,7 +54,7 @@ const format = (
  * @param {string[]} variables - new variables to distribute
  */
 const getBranches = (branches: string[], variables: string[]): string[] => {
-    let newBranches = []
+    const newBranches = []
 
     for (const branch of branches) {
         for (const variable of variables) {
@@ -91,7 +91,7 @@ const formatKey = (keys: string[]): string => {
             branches = getBranches(branches, i.split(","))
         } else {
             for (let index = 0; index < branches.length; index++) {
-                if (index == 0) {
+                if (index === 0) {
                     branches[index] += `${i} `
                 } else {
                     branches[index] += ` ${i} `
@@ -100,7 +100,7 @@ const formatKey = (keys: string[]): string => {
         }
     }
 
-    newKey = branches.join(",").replace(/  /g, " ").replace(/  /g, " ")
+    newKey = branches.join(",").replace(/ {2}/g, " ").replace(/ {2}/g, " ")
     return newKey
 }
 
