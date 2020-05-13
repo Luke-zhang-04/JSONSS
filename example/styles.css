@@ -52,6 +52,12 @@ body {
   font-size: 3px;
 }
 
+.container-white a,
+.container-white p {
+  font-family: monospace;
+  font-size: 2rem;
+}
+
 .container-blue {
   border-radius: 5px;
   background-color: rgba(0, 0, 200, 1);
@@ -74,6 +80,12 @@ body {
 .container-blue .my-werid-nested-class .my-other-nested-class {
   color: rgba(0, 0, 200, 1);
   font-size: 3px;
+}
+
+.container-blue a,
+.container-blue p {
+  font-family: monospace;
+  font-size: 2rem;
 }
 
 .container-red {
@@ -100,6 +112,12 @@ body {
   font-size: 3px;
 }
 
+.container-red a,
+.container-red p {
+  font-family: monospace;
+  font-size: 2rem;
+}
+
 .container-green {
   border-radius: 5px;
   background-color: #0f0;
@@ -124,6 +142,12 @@ body {
   font-size: 3px;
 }
 
+.container-green a,
+.container-green p {
+  font-family: monospace;
+  font-size: 2rem;
+}
+
 .container-none {
   border-radius: 5px;
   background-color: rgba(0, 0, 0, 0);
@@ -146,4 +170,10 @@ body {
 .container-none .my-werid-nested-class .my-other-nested-class {
   color: rgba(0, 0, 0, 0);
   font-size: 3px;
+}
+
+.container-none a,
+.container-none p {
+  font-family: monospace;
+  font-size: 2rem;
 }

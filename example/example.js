@@ -51,6 +51,10 @@ const containers = () => {
                     color: value,
                     "font-size": "3px"
                 }
+            },
+            "a, p": {
+                font_family: "monospace",
+                font_size: "2rem",
             }
         }
     }

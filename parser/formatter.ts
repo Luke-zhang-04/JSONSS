@@ -35,6 +35,7 @@ const format = (
     value: string,
     pretty: boolean,
     debug: boolean,
+    history: string[] = []
 ): string => {
 
     if (debug){
@@ -46,6 +47,54 @@ const format = (
     } else {
         return `${key.replace(/_/g, "-")}:${value.replace(/_/g, "-")};`
     }
+}
+
+/**
+ * 
+ * @param {string[]} branches - branches
+ * @param {string[]} variables - new variables to distribute
+ */
+const getBranches = (branches: string[], variables: string[]): string[] => {
+    let newBranches = []
+
+    for (const branch of branches) {
+        for (const variable of variables) {
+            newBranches.push(`${branch.replace(/ /g, "")} ${variable.replace(/ /g, "")}`)
+        }
+    }
+
+    return newBranches
+}
+
+/**
+ * returns true if there is a comma
+ * @param {string[]} arr 
+ */
+const checkComma = (arr: string[]): boolean => {
+    for (const i of arr) {
+        if (i.includes(",")) {
+            return true
+        }
+    }
+    return false
+}
+
+const formatKey = (keys: string[]): string => {
+    let newKey = ""
+    let branches: string[] = [""]
+
+    for (const i of keys) {
+        if (i.includes(",")) {
+            branches = getBranches(branches, i.split(","))
+        } else {
+            for (let index = 0; index < branches.length; index++) {
+                branches[index] += `${i} `
+            }
+        }
+    }
+
+    newKey = branches.join(",")
+    return newKey
 }
 
 /**
@@ -69,17 +118,22 @@ export const formatProperties = (
     let newValues = "" // new values
     let newKey = "" // new key with history
     
-    for (const i of history) { // add history to key
-        newKey += `${i} `
+    if (checkComma(history)) {
+        newKey = formatKey(history)
+        if (pretty) {newKey += " "}
+    } else {
+        for (const i of history) { // add history to key
+            newKey += `${i} `
+        }   
     }
-
+   
     for (const [key, value] of Object.entries(properties)) { // format property
-        newValues += format(key, value, pretty, debug)
+        newValues += format(key, value, pretty, debug, history)
     }
 
     if (pretty) { // return result
-        return `${newKey}{\n${newValues}}\n\n`
+        return `${newKey.replace(/,/g, ",\n")}{\n${newValues.replace(/_/g, "-")}}\n\n`
     } else {
-        return `${newKey}{${newValues}}`
+        return `${newKey}{${newValues.replace(/_/g, "-")}}`
     }
 }
