@@ -49,6 +49,62 @@ const format = (
 }
 
 /**
+ * 
+ * @param {string[]} branches - branches
+ * @param {string[]} variables - new variables to distribute
+ */
+const getBranches = (branches: string[], variables: string[]): string[] => {
+    const newBranches = []
+
+    for (const branch of branches) {
+        for (const variable of variables) {
+            newBranches.push(`${branch} ${variable}`)
+        }
+    }
+
+    return newBranches
+}
+
+/**
+ * returns true if there is a comma
+ * @param {string[]} arr 
+ */
+const checkComma = (arr: string[]): boolean => {
+    for (const i of arr) {
+        if (i.includes(",")) {
+            return true
+        }
+    }
+    return false
+}
+
+/**
+ * Foormatts keys with commas
+ * @param {string[]} keys - keys which need formatting
+ */
+const formatKey = (keys: string[]): string => {
+    let newKey = ""
+    let branches: string[] = [""]
+
+    for (const i of keys) {
+        if (i.includes(",")) {
+            branches = getBranches(branches, i.split(","))
+        } else {
+            for (let index = 0; index < branches.length; index++) {
+                if (index === 0) {
+                    branches[index] += `${i} `
+                } else {
+                    branches[index] += ` ${i} `
+                }
+            }
+        }
+    }
+
+    newKey = branches.join(",").replace(/ {2}/g, " ").replace(/ {2}/g, " ")
+    return newKey
+}
+
+/**
  * formats properties with proper key
  * @param {{[key: string]: string}} properties - properties to format
  * @param {bool} pretty - pretty print or not
@@ -69,17 +125,22 @@ export const formatProperties = (
     let newValues = "" // new values
     let newKey = "" // new key with history
     
-    for (const i of history) { // add history to key
-        newKey += `${i} `
+    if (checkComma(history)) {
+        newKey = formatKey(history)
+        if (pretty) {newKey += " "}
+    } else {
+        for (const i of history) { // add history to key
+            newKey += `${i} `
+        }   
     }
-
+   
     for (const [key, value] of Object.entries(properties)) { // format property
         newValues += format(key, value, pretty, debug)
     }
 
     if (pretty) { // return result
-        return `${newKey}{\n${newValues}}\n\n`
+        return `${newKey.replace(/,/g, ",\n")}{\n${newValues.replace(/_/g, "-")}}\n\n`
     } else {
-        return `${newKey}{${newValues}}`
+        return `${newKey}{${newValues.replace(/_/g, "-")}}`
     }
 }

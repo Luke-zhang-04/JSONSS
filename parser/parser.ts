@@ -30,6 +30,7 @@ export const parseJsonss = (
     styles: {},
     pretty: boolean,
     debug: boolean,
+    lint: boolean,
     history: string[] = [],
 ): string => {
     let output = "" // final output
@@ -56,7 +57,7 @@ export const parseJsonss = (
             }
         }
         
-        if (debug) {
+        if (debug && Object.keys(properties).length > 0) {
             console.log("\t🤓 parsing properties", properties)
         }
         
@@ -65,13 +66,13 @@ export const parseJsonss = (
             output += formatProperties(properties, pretty, debug, history)
         }
         
-        if (debug) {
+        if (debug && Object.keys(objects).length > 0) {
             console.log("\t😩 parsing nested classes", Object.keys(objects))
         }
 
         // recurse for nested styles
         if (Object.keys(objects).length > 0) {
-            output += parseJsonss(objects, pretty, debug, history)
+            output += parseJsonss(objects, pretty, debug, lint, history)
         }
 
         //remote latest history

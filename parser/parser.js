@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const formatter_1 = require("./formatter");
-exports.parseJsonss = (styles, pretty, debug, history = []) => {
+exports.parseJsonss = (styles, pretty, debug, lint, history = []) => {
     let output = "";
     for (const [key, value] of Object.entries(styles)) {
         if (debug) {
@@ -21,17 +21,17 @@ exports.parseJsonss = (styles, pretty, debug, history = []) => {
                 throw `Cannot have typeof ${typeof (value2)} as value in JSONSS`;
             }
         }
-        if (debug) {
+        if (debug && Object.keys(properties).length > 0) {
             console.log("\t🤓 parsing properties", properties);
         }
         if (Object.keys(properties).length > 0) {
             output += formatter_1.formatProperties(properties, pretty, debug, history);
         }
-        if (debug) {
+        if (debug && Object.keys(objects).length > 0) {
             console.log("\t😩 parsing nested classes", Object.keys(objects));
         }
         if (Object.keys(objects).length > 0) {
-            output += exports.parseJsonss(objects, pretty, debug, history);
+            output += exports.parseJsonss(objects, pretty, debug, lint, history);
         }
         if (history.length > 0) {
             history.pop();

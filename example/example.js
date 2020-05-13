@@ -51,6 +51,10 @@ const containers = () => {
                     color: value,
                     "font-size": "3px"
                 }
+            },
+            "a, p": {
+                font_family: "monospace",
+                font_size: "2rem",
             }
         }
     }
@@ -72,10 +76,19 @@ const jsonss = () => {
     return {
         body: {
             color: white,
-    background_color: blue
+            background_color: blue
         },
         ...buttons(),
         ...containers(),
+        ".class1": {
+            ".class2": {
+                "a, p": {
+                    ".class3": {
+                        text_align: "center",
+                    },
+                },
+            },
+        },
     }
 }
 
