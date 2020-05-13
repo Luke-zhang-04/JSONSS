@@ -34,8 +34,7 @@ const format = (
     key: string,
     value: string,
     pretty: boolean,
-    debug: boolean,
-    history: string[] = []
+    debug: boolean
 ): string => {
 
     if (debug){
@@ -136,7 +135,7 @@ export const formatProperties = (
     }
    
     for (const [key, value] of Object.entries(properties)) { // format property
-        newValues += format(key, value, pretty, debug, history)
+        newValues += format(key, value, pretty, debug)
     }
 
     if (pretty) { // return result

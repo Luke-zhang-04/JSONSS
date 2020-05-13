@@ -13,6 +13,7 @@ const fs = __importStar(require("fs"));
 const parser_1 = require("./parser/parser");
 let pretty = false;
 let debug = false;
+let lint;
 const program = new commander_1.Command();
 program
     .option("-nol --nolint", "Don't check for for CSS errors")
@@ -29,9 +30,11 @@ if (program.pretty) {
 }
 if (!program.lint) {
     console.log("Will check for CSS errors 😊");
+    lint = true;
 }
 else {
     console.log("Will not check for CSS errors 🧐");
+    lint = false;
 }
 const args = {
     in: process.argv[2],
@@ -61,7 +64,7 @@ const write = () => {
         throw "Missing parameter for output file 👀";
     }
     const data = styles.jsonss();
-    output += parser_1.parseJsonss(data, pretty, debug);
+    output += parser_1.parseJsonss(data, pretty, debug, lint);
     if (pretty) {
         output = output.substr(0, output.length - 1);
     }

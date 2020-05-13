@@ -26,6 +26,7 @@ import { parseJsonss as parser } from "./parser/parser";
 
 let pretty = false // pretty printing
 let debug = false  // debig mode
+let lint: boolean // lint
 
 // set up flags
 const program = new Command()
@@ -48,8 +49,10 @@ if (program.pretty) {
 
 if (!program.lint) {
     console.log("Will check for CSS errors 😊")
+    lint = true
 } else {
     console.log("Will not check for CSS errors 🧐")
+    lint = false
 }
 
 const args = {
@@ -87,7 +90,7 @@ const write = (): number | void => {
 
     const data = styles.jsonss() // get data from input file
 
-    output += parser(data, pretty, debug) // parse JSON object
+    output += parser(data, pretty, debug, lint) // parse JSON object
 
     if (pretty) {
         output = output.substr(0, output.length - 1)

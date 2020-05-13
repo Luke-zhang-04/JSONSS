@@ -30,6 +30,7 @@ export const parseJsonss = (
     styles: {},
     pretty: boolean,
     debug: boolean,
+    lint: boolean,
     history: string[] = [],
 ): string => {
     let output = "" // final output
@@ -71,7 +72,7 @@ export const parseJsonss = (
 
         // recurse for nested styles
         if (Object.keys(objects).length > 0) {
-            output += parseJsonss(objects, pretty, debug, history)
+            output += parseJsonss(objects, pretty, debug, lint, history)
         }
 
         //remote latest history

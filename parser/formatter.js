@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const format = (key, value, pretty, debug, history = []) => {
+const format = (key, value, pretty, debug) => {
     if (debug) {
         console.log("\t\t\t🔎 formatting", key, value);
     }
@@ -67,7 +67,7 @@ exports.formatProperties = (properties, pretty, debug, history = []) => {
         }
     }
     for (const [key, value] of Object.entries(properties)) {
-        newValues += format(key, value, pretty, debug, history);
+        newValues += format(key, value, pretty, debug);
     }
     if (pretty) {
         return `${newKey.replace(/,/g, ",\n")}{\n${newValues.replace(/_/g, "-")}}\n\n`;
