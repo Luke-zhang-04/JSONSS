@@ -61,9 +61,9 @@ export const parseJsonss = (
         for (const [key2, value2] of Object.entries(value)) {
             if (typeof(value2) === "string") {
                 properties[key2] = value2
-            } else if (value2 instanceof Object) {
+            } else if (typeof(value2) === "object") {
                 objects[key2] = value2
-            } else if (value2 instanceof Number) {
+            } else if (typeof(value2) === "number") {
                 properties[key2] = `${value2.toString()}rem`
             } else {
                 throw Error(`Cannot have typeof ${typeof(value2)} as value in JSONSS`)

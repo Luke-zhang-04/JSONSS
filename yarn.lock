@@ -1084,6 +1084,14 @@ json5@^1.0.1:
   dependencies:
     minimist "^1.2.0"
 
+jsonss@^1.3.0-b1:
+  version "1.3.0-b1"
+  resolved "https://registry.yarnpkg.com/jsonss/-/jsonss-1.3.0-b1.tgz#f786988abc1b0de6d60b212f7c4f292f7a784309"
+  integrity sha512-K6CcC23Cn+45GQnFm+9V1Ezf2aY+jKiUHABKyyUtxd/HvAXhg6C2+fpuLqwVYo5CEZXafsvefCj56lnZWPD7gA==
+  dependencies:
+    "@types/node" "^13.13.5"
+    commander "^5.1.0"
+
 jsx-ast-utils@^2.2.3:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/jsx-ast-utils/-/jsx-ast-utils-2.4.1.tgz#1114a4c1209481db06c690c2b4f488cc665f657e"

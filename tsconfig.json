@@ -4,9 +4,9 @@
         "noImplicitAny": true,
         "removeComments": false,
         "preserveConstEnums": true,
-        "sourceMap": true,
         "target": "ESNext",
-        "esModuleInterop": true
+        "esModuleInterop": true,
+        "inlineSourceMap": true
     },
     "exclude": ["node_modules", "*.js"],
     "include": [

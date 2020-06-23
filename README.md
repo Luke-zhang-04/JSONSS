@@ -30,18 +30,16 @@ JSONSS allows you to use JavaScript loops, functions, and variables, and JSON to
 #### NPM ####
 In terminal, type
 ```bash
-#npm install --global jsonss
-npm i -g jsonss
-```
-Or, if you just want to install as a dev dependency, type
-```bash
-#npm install jsonss --save-dev
+# npm install jsonss --save-dev
 npm i jsonss --save-dev
+
+# If you prefer Yarn
+yarn add jsonss -D
 ```
 If for whatever reason you want to use Github Packages, you can use
 ```bash
 # npm install @luke-zhang-04/jsonss --save-dev
-npm i @luke-zhang-04/jsonss -- save-dev
+npm i @luke-zhang-04/jsonss --save-dev
 ```
 #### GitHub ####
 Download the latest release <a href="https://github.com/Luke-zhang-04/JSONSS/releases">here</a> or clone through command line
@@ -50,37 +48,25 @@ git clone --depth=1 https://github.com/Luke-zhang-04/JSONSS.git
 ```
 
 ### Invocation ###
-If installed globally, you can invoke JSONSS with
+You can invoke JSONSS with
 ```bash
-JSONSS
-```
-
-If installed as a dev-dependency, you can invoke JSONSS with
-```bash
-node node_modules/jsonss/
-```
-
-If installed via GitHub, you can invoke JSONSS with
-```bash
-node JSONSS
-```
-
-### Parameters ###
-The invocation structure looks like
-```bash
-<invocation> <input file> <output file>
+npx jsonss [file1] [file2] <options>
 ```
 
 Flags incude
-```txt
--nol --nolint, Don't check for for CSS errors
--d --debug, display output log
--p --pretty, pretty print
+```bash
+Usage: jsonss [options]
+
+Options:
+  -nol --nolint  Don't check for for CSS errors
+  -d --debug     display output log
+  -p --pretty    pretty print
+  -h, --help     display help for command
 ```
 
 E.g
 ```bash
-node node_modules/jsonss example.js styles.css -d --pretty
+npx jsonss example/example.js example/styles.css -d -pretty
 ```
 
 ## License notice ##
