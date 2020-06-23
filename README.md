@@ -36,11 +36,13 @@ npm i jsonss --save-dev
 # If you prefer Yarn
 yarn add jsonss -D
 ```
-If for whatever reason you want to use Github Packages, you can use
+***WARNING: THE GITHUB PACKAGES EDITION OF JSONSS IS DEPRECIATED, USE NPM DIRECTLY INSTEAD***
+~~If for whatever reason you want to use Github Packages, you can use
 ```bash
 # npm install @luke-zhang-04/jsonss --save-dev
 npm i @luke-zhang-04/jsonss --save-dev
 ```
+~~
 #### GitHub ####
 Download the latest release <a href="https://github.com/Luke-zhang-04/JSONSS/releases">here</a> or clone through command line
 ```bash
