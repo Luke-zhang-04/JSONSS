@@ -5,7 +5,7 @@
 ***
 
 <p align="center">
-    <a href="https://www.javascript.com/"><img alt="Forthebadge made with TS and JS" src="https://img.shields.io/badge/Made%20with-TS%20and%20JS-257ACC?style=for-the-badge&logo=typescript"/></a>
+    <a href="https://www.javascript.com/"><img alt="Forthebadge made with TS" src="https://img.shields.io/badge/Made%20with-TS-257ACC?style=for-the-badge&logo=typescript&logoColor=257ACC"/></a>
     <a href="https://www.javascript.com/"><img alt="Forthebadge uses JS" src="https://img.shields.io/badge/Uses-JS-EED948?style=for-the-badge&logo=javascript"/></a>
 </p>
 
@@ -47,14 +47,35 @@ Download the latest release <a href="https://github.com/Luke-zhang-04/JSONSS/rel
 git clone --depth=1 https://github.com/Luke-zhang-04/JSONSS.git
 ```
 
+#### Curl ###
+If you for some reason want to install with Curl (or Wget or something), the command is as follows
+```bash
+curl -L https://github.com/Luke-zhang-04/JSONSS/archive/<VERSION_NAME>.tar.gz | tar zx # Download file
+mv JSONSS-<VERSION_NAME> JSONSS/ # Rename folder to just JSONSS
+```
+
+E.g
+```bash
+curl -L https://github.com/Luke-zhang-04/JSONSS/archive/v1.3.0.tar.gz | tar zx
+mv JSONSS-1.3.0 JSONSS
+```
+
+I would strongly recommend using a package manager such as NPM or Yarn, however.
+
 ### Invocation ###
 You can invoke JSONSS with
 ```bash
 npx jsonss [file1] [file2] <options>
 ```
 
-Flags incude
+### Help ###
+Thanks to Commander, you can get help with the command:
 ```bash
+# npx jsonss --help
+npx jsonss -h
+```
+
+```txt
 Usage: jsonss [options]
 
 Options:
