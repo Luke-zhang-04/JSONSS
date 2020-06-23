@@ -15,7 +15,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-      - run: npm ci
+      - run: yarn install
       - run: npm test
 
   publish-npm:
@@ -29,7 +29,7 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: printenv
       - run: cat /home/runner/work/_temp/.npmrc
-      - run: npm ci
+      - run: yarn install
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
