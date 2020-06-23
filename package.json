@@ -1,7 +1,10 @@
 {
   "name": "jsonss",
-  "version": "1.2.0",
+  "version": "1.3.0-a1",
   "description": "JavaScript Object Notated Style Sheets",
+  "bin": {
+    "jsonss": "index.js"
+  },
   "main": "index.js",
   "scripts": {
     "test": "node . example/example.js example/styles.css -p -d"
@@ -17,7 +20,11 @@
     "web-dev",
     "preprocessor"
   ],
-  "author": "Luke Zhang",
+  "author": {
+    "name": "Luke Zhang",
+    "email": "luke.zhang2004dev@gmail.com",
+    "url": "https://luke-zhang-04.github.io"
+  },
   "license": "GPL-3.0",
   "bugs": {
     "url": "https://github.com/Luke-zhang-04/JSONSS/issues"
@@ -28,7 +35,11 @@
     "commander": "^5.1.0"
   },
   "devDependencies": {
-    "tsc": "^1.20150623.0",
-    "typescript": "^3.8.3"
+    "@typescript-eslint/eslint-plugin": "^3.4.0",
+    "@typescript-eslint/parser": "^3.4.0",
+    "eslint": "^7.3.1",
+    "eslint-config-recommended": "^4.1.0",
+    "eslint-plugin-prefer-arrow": "^1.2.1",
+    "typescript": "^3.9.0"
   }
 }

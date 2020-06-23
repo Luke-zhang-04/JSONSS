@@ -21,14 +21,15 @@
  *
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
-*/ 
+ */ 
 
 /**
- * format a property
- * @param {str} key - key of property
- * @param {str} value - value of property
- * @param {bool} pretty - pretty print or not
- * @param {bool} debug - show debug logs or not
+ * Format a property
+ * @param {string} key - key of property
+ * @param {string} value - value of property
+ * @param {boolean} pretty - pretty print or not
+ * @param {boolean} debug - show debug logs or not
+ * @returns {string} formatted property
  */
 export const format = (
     key: string,
@@ -37,23 +38,28 @@ export const format = (
     debug: boolean,
 ): string => {
 
-    if (debug){
+    if (debug) {
         console.log("\t\t\t🔎 formatting", key, value)
     }
 
     if (pretty) {
-        return `  ${key.replace(/_/g, "-")}: ${value.replace(/_/g, "-")};\n`
-    } else {
-        return `${key.replace(/_/g, "-")}:${value.replace(/_/g, "-")};`
-    }
+        return `  ${key.replace(/_/gu, "-")}: ${value.replace(/_/gu, "-")};\n`
+    } 
+    
+    return `${key.replace(/_/gu, "-")}:${value.replace(/_/gu, "-")};`
+    
 }
 
 /**
- * 
- * @param {string[]} branches - branches
- * @param {string[]} variables - new variables to distribute
+ * Gets "branches", all nestings/variables to distribute
+ * @param {Array.<string>} branches - branches
+ * @param {Array.<string>} variables - new variables to distribute
+ * @returns {Array.<string>} variables to destribute
  */
-export const getBranches = (branches: string[], variables: string[]): string[] => {
+export const getBranches = (
+    branches: string[],
+    variables: string[],
+): string[] => {
     const newBranches = []
 
     for (const branch of branches) {
@@ -66,50 +72,57 @@ export const getBranches = (branches: string[], variables: string[]): string[] =
 }
 
 /**
- * returns true if there is a comma
- * @param {string[]} arr 
+ * Returns true if there is a comma
+ * @param {Array.<string>} arr - array of strings to check
+ * @returns {boolean} if there is a comma
  */
 export const checkComma = (arr: string[]): boolean => {
-    for (const i of arr) {
-        if (i.includes(",")) {
+    for (const item of arr) {
+        if (item.includes(",")) {
             return true
         }
     }
+    
     return false
 }
 
 /**
- * Foormatts keys with commas
- * @param {string[]} keys - keys which need formatting
+ * Formats keys with commas
+ * @param {Array.<string>} keys - keys which need formatting
+ * @returns {string} new, formatted key
  */
 export const formatKey = (keys: string[]): string => {
-    let newKey = ""
-    let branches: string[] = [""]
+    let newKey = "",
+        branches: string[] = [""]
 
-    for (const i of keys) {
-        if (i.includes(",")) {
-            branches = getBranches(branches, i.split(","))
+    for (const item of keys) {
+        if (item.includes(",")) {
+            branches = getBranches(branches, item.split(","))
         } else {
             for (let index = 0; index < branches.length; index++) {
                 if (index === 0) {
-                    branches[index] += `${i} `
+                    branches[index] += `${item} `
                 } else {
-                    branches[index] += ` ${i} `
+                    branches[index] += ` ${item} `
                 }
             }
         }
     }
 
-    newKey = branches.join(",").replace(/ {2}/g, " ").replace(/ {2}/g, " ").replace(/ ,/g, ",")
+    newKey = branches.join(",").replace(/ {2}/gu, " ")
+        .replace(/ {2}/gu, " ")
+        .replace(/ ,/gu, ",")
+    
     return newKey
 }
 
 export const auditIndents = (key: string): string => {
     let newKey = key
+
     if (newKey.includes("\n ")) {
-        newKey = newKey.replace(/\n /g, "\n")
+        newKey = newKey.replace(/\n /gu, "\n")
         newKey = newKey.slice(1)
     }
 
-    return newKey.replace(/ {2}/g, " ")
+    return newKey.replace(/ {2}/gu, " ")
 }

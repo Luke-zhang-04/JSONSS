@@ -21,21 +21,22 @@
  *
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
-*/ 
+ */ 
 
 import {
-    format,
-    checkComma,
-    formatKey,
     auditIndents,
-} from "./functions";
+    checkComma,
+    format,
+    formatKey
+} from "./functions"
 
 /**
- * formats properties with proper key
- * @param {{[key: string]: string}} properties - properties to format
- * @param {bool} pretty - pretty print or not
- * @param {bool} debug - show debug logs or not
- * @param {arr} history - history of names
+ * Formats properties with proper key
+ * @param {Object.<string, string>} properties - properties to format
+ * @param {boolean} pretty - pretty print or not
+ * @param {boolean} debug - show debug logs or not
+ * @param {Array.<string>} history - history of names
+ * @returns {string} formatted properties
  */
 export const formatProperties = (
     properties: {[key: string]: string},
@@ -45,28 +46,36 @@ export const formatProperties = (
 ): string => {
 
     if (debug) {
-        console.log("\t\t🔎 preparing to format", Object.entries(properties), "pretty =", pretty)
+        console.log(
+            "\t\t🔎 preparing to format",
+            Object.entries(properties),
+            "pretty =",
+            pretty)
+        
     }
 
-    let newValues = "" // new values
-    let newKey = "" // new key with history
+    let newValues = "", // New values
+        newKey = "" // New key with history
     
     if (checkComma(history)) {
         newKey = formatKey(history)
-        if (pretty) {newKey += " "}
+        if (pretty) {
+            newKey += " "
+        }
     } else {
-        for (const i of history) { // add history to key
-            newKey += `${i} `
+        for (const item of history) { // Add history to key
+            newKey += `${item} `
         }   
     }
    
-    for (const [key, value] of Object.entries(properties)) { // format property
+    for (const [key, value] of Object.entries(properties)) { // Format property
         newValues += format(key, value, pretty, debug)
     }
 
-    if (pretty) { // return result
-        return `${auditIndents(newKey.replace(/,/g, ",\n").replace(/_/g, "-"))}{\n${newValues.replace(/_/g, "-")}}\n\n`
-    } else {
-        return `${newKey}{${newValues.replace(/_/g, "-")}}`
-    }
+    if (pretty) { // Return result
+        return `${auditIndents(newKey.replace(/,/gu, ",\n").replace(/_/gu, "-"))}{\n${newValues.replace(/_/gu, "-")}}\n\n`
+    } 
+    
+    return `${newKey}{${newValues.replace(/_/gu, "-")}}`
+    
 }

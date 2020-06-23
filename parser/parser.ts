@@ -16,15 +16,19 @@
  *
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
-*/
-import { formatProperties } from "./formatter";
+ */
+import {formatProperties} from "./formatter"
+
+/* eslint-disable max-lines-per-function, max-statements */
 
 /**
  * Turns JSONSS into CSS
- * @param {{[key: string]: string | {}}} styles - JSONSS of styles
- * @param {bool} pretty - pretty print or not
- * @param {bool} debug - show debug logs or not
- * @param {arr} history - history of names
+ * @param {Object.<string, string | number | Object>} styles - JSONSS of styles
+ * @param {boolean} pretty - pretty print or not
+ * @param {boolean} debug - show debug logs or not
+ * @param {boolean} lint - if css should be linted
+ * @param {Array.<string>} history - history of names
+ * @returns {string} parsed CSS
  */
 export const parseJsonss = (
     styles: {[key: string]: string | number | {}},
@@ -33,36 +37,36 @@ export const parseJsonss = (
     lint: boolean,
     history: string[] = [],
 ): string => {
-    let output = "" // final output
+    let output = "" // Final output
 
-    for (const i of ["HEADER", "DOCSTRING"]) {
-        if (Object.keys(styles).includes(i) && history.length == 0) {
-            output += `/*\n${styles[i]}\n*/\n\n`
-            delete styles[i] 
+    for (const index of ["HEADER", "DOCSTRING"]) {
+        if (Object.keys(styles).includes(index) && history.length === 0) {
+            output += `/*\n${styles[index]}\n*/\n\n`
+            Reflect.deleteProperty(styles, index)
         }
     }
 
-    for (const [key, value] of Object.entries(styles)) { // iterate through styles
+    for (const [key, value] of Object.entries(styles)) { // Iterate through styles
         if (debug) {
             console.log("🤓 preparing to parse", key, value)
         }
 
-        // split properties and nested styles
-        const properties: {[key: string]: string} = {}
-        const objects: {[key: string]: {}} = {}
+        // Split properties and nested styles
+        const properties: {[key: string]: string} = {},
+            objects: {[key: string]: {}} = {}
 
-        history.push(key) // add current key to history
+        history.push(key) // Add current key to history
         
-        // split properties and nested styles
+        // Split properties and nested styles
         for (const [key2, value2] of Object.entries(value)) {
             if (typeof(value2) === "string") {
                 properties[key2] = value2
-            } else if (typeof(value2) === "object") {
+            } else if (value2 instanceof Object) {
                 objects[key2] = value2
-            } else if (typeof(value2) === "number") {
-                properties[key2] = value2.toString() + "rem"
+            } else if (value2 instanceof Number) {
+                properties[key2] = `${value2.toString()}rem`
             } else {
-                throw `Cannot have typeof ${typeof(value2)} as value in JSONSS`
+                throw Error(`Cannot have typeof ${typeof(value2)} as value in JSONSS`)
             }
         }
         
@@ -70,7 +74,7 @@ export const parseJsonss = (
             console.log("\t🤓 parsing properties", properties)
         }
         
-        // format properties
+        // Format properties
         if (Object.keys(properties).length > 0) {
             output += formatProperties(properties, pretty, debug, history)
         }
@@ -79,15 +83,16 @@ export const parseJsonss = (
             console.log("\t😩 parsing nested classes", Object.keys(objects))
         }
 
-        // recurse for nested styles
+        // Recurse for nested styles
         if (Object.keys(objects).length > 0) {
             output += parseJsonss(objects, pretty, debug, lint, history)
         }
 
-        //remote latest history
+        // Remote latest history
         if (history.length > 0) {
             history.pop()
         }
     }
+    
     return output
 }
