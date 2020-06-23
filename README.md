@@ -37,6 +37,7 @@ npm i jsonss --save-dev
 yarn add jsonss -D
 ```
 ***WARNING: THE GITHUB PACKAGES EDITION OF JSONSS IS DEPRECIATED, USE NPM DIRECTLY INSTEAD***
+
 ~~If for whatever reason you want to use Github Packages, you can use
 ```bash
 # npm install @luke-zhang-04/jsonss --save-dev
