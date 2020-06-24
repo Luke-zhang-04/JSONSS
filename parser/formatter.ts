@@ -74,8 +74,8 @@ export const formatProperties = (
 
     if (pretty) { // Return result
         return `${auditIndents(newKey.replace(/,/gu, ",\n").replace(/_/gu, "-"))}{\n${newValues.replace(/_/gu, "-")}}\n\n`
-    } 
+    }
     
-    return `${newKey}{${newValues.replace(/_/gu, "-")}}`
+    return `${newKey.replace(/_/gu, "-")}{${newValues.replace(/_/gu, "-")}}`
     
 }
