@@ -1089,10 +1089,10 @@ json5@^1.0.1:
   dependencies:
     minimist "^1.2.0"
 
-jsonss@^1.3.0-b1:
-  version "1.3.0-b1"
-  resolved "https://registry.yarnpkg.com/jsonss/-/jsonss-1.3.0-b1.tgz#f786988abc1b0de6d60b212f7c4f292f7a784309"
-  integrity sha512-K6CcC23Cn+45GQnFm+9V1Ezf2aY+jKiUHABKyyUtxd/HvAXhg6C2+fpuLqwVYo5CEZXafsvefCj56lnZWPD7gA==
+jsonss@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/jsonss/-/jsonss-1.3.0.tgz#cbe67e16b5e8bed4835f695907a47ede1dbb2654"
+  integrity sha512-1bn3qFJcLRqJ9ENeWxWIg5qObLLb3sJl0hnyt5VJDqgMoyJNSx5tctwdyKydgzkoWyWnT3ULaXCnDuSMi9eDTA==
   dependencies:
     "@types/node" "^13.13.5"
     commander "^5.1.0"

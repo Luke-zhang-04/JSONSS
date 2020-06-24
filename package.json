@@ -1,6 +1,6 @@
 {
   "name": "jsonss",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "JavaScript Object Notated Style Sheets",
   "bin": {
     "jsonss": "index.js"
@@ -30,7 +30,7 @@
   "bugs": {
     "url": "https://github.com/Luke-zhang-04/JSONSS/issues"
   },
-  "homepage": "https://github.com/Luke-zhang-04/JSONSS#readme",
+  "homepage": "https://github.com/Luke-zhang-04/JSONSS",
   "dependencies": {
     "@types/node": "^14.0.14",
     "commander": "^5.1.0"
@@ -41,7 +41,7 @@
     "eslint": "^7.3.1",
     "eslint-config-recommended": "^4.1.0",
     "eslint-plugin-prefer-arrow": "^1.2.1",
-    "jsonss": "^1.3.0-b1",
+    "jsonss": "^1.3.0",
     "typescript": "^3.9.0"
   }
 }
