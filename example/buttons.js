@@ -1,14 +1,16 @@
-const buttons = (themeColours) => {
-    const buttons = {}
+const variables = require("./variables")
 
-    for (const [key, value] of Object.entries(themeColours)) {
-        buttons[`.btn_${key}`] = {
-            color: "#000",
-            background_color: value
+    const buttons = () => {
+        const buttons = {}
+
+        for (const [key, value] of Object.entries(variables.themeColours)) {
+            buttons[`.btn_${key}`] = {
+                color: "#000",
+                background_color: value
+            }
         }
-    }
 
-    return buttons
-}
+        return buttons
+    }
 
 module.exports = buttons

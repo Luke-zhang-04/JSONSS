@@ -19,40 +19,21 @@
  */
 const buttons = require("./buttons"),
     containers = require("./containers"),
-    spacing = require("./spacing")
-
-const white = "#fff",
-    blue = "rgba(0, 0, 200, 1)",
-    red = "red",
-    green = "#0f0",
-    none = "rgba(0, 0, 0, 0)",
-
-    themeColours = {
-        white,
-        blue,
-        red,
-        green,
-        none
-    },
-
-    spacers = [
-        0.25,
-        0.5,
-        1,
-        2,
-        4,
-    ]
+    spacing = require("./spacing"),
+    variables = require("./variables"),
+    root = require("./root"),
 
     jsonss = {
         HEADER: // Comment at top of CSS file
             "  JSONSS; JavaScript Object Nodated Style Sheets\n  Copyright (C) 2020 Luke Zhang\n\n  https://luke-zhang-04.github.io\n\n  This program is free software: you can redistribute it and/or modify\n  it under the terms of the GNU General Public License as published by\n  the Free Software Foundation, either version 3 of the License, or\n  (at your option) any later version.\n\n  This program is distributed in the hope that it will be useful,\n  but WITHOUT ANY WARRANTY; without even the implied warranty of\n  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n  GNU General Public License for more details.\n  You should have received a copy of the GNU General Public License\n  along with this program.  If not, see <https://www.gnu.org/licenses/>.",
         body: {
-            color: white,
-            background_color: blue
+            color: variables.white,
+            background_color: variables.blue
         },
-        ...spacing(spacers),
-        ...buttons(themeColours),
-        ...containers(themeColours),
+        ...root(),
+        ...spacing(variables.spacers),
+        ...buttons(),
+        ...containers,
         ".class_1": {
             ".class2": {
                 "a, p, li": {
