@@ -5,8 +5,8 @@
 ***
 
 <p align="center">
-    <a href="https://www.javascript.com/"><img alt="Forthebadge made with TS" src="https://img.shields.io/badge/Made%20with-TS-257ACC?style=for-the-badge&logo=typescript&logoColor=257ACC"/></a>
-    <a href="https://www.javascript.com/"><img alt="Forthebadge uses JS" src="https://img.shields.io/badge/Uses-JS-EED948?style=for-the-badge&logo=javascript"/></a>
+    <a href="https://www.typescriptlang.org/"><img alt="Forthebadge made with TS" src="https://img.shields.io/badge/Made%20with-TS-257ACC?style=for-the-badge&logo=typescript&logoColor=257ACC"/></a>
+    <a href="https://www.ecma-international.org/"><img alt="Forthebadge uses JS" src="https://img.shields.io/badge/Uses-JS-EED948?style=for-the-badge&logo=javascript"/></a>
 </p>
 
 <p align="center">
