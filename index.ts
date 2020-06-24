@@ -19,17 +19,25 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
+import * as fs from "fs"
+import {Command} from "commander"
+import {parseJsonss as parser} from "./parser/parser"
 
-import { Command } from "commander";
-import * as fs from "fs";
-import { parseJsonss as parser } from "./parser/parser";
+type Callback = ()=> {}
 
-let pretty = false // pretty printing
-let debug = false  // debig mode
-let lint: boolean // lint
+interface Styles {
+    [index: string]: {} | Callback,
+    jsonss?: Callback | {},
+}
 
-// set up flags
+let pretty = false, // Pretty printing
+    debug = false, // Debig mode
+    lint: boolean, // Lint
+    styles: Styles | Callback // Input file
+
+// Set up flags
 const program = new Command()
+
 program
     .option("-nol --nolint", "Don't check for for CSS errors")
     .option("-d --debug", "display output log")
@@ -47,76 +55,90 @@ if (program.pretty) {
     pretty = true
 }
 
-if (!program.lint) {
-    console.log("Will check for CSS errors 😊")
-    lint = true
-} else {
+if (program.lint) {
     console.log("Will not check for CSS errors 🧐")
     lint = false
+} else {
+    console.log("Will check for CSS errors 😊")
+    lint = true
 }
 
 const args = {
-    in: process.argv[2], // input file
-    out: process.argv[3], // output file
-    path: process.argv[1], // path of file
+    in: process.argv[2], // Input file
+    out: process.argv[3], // Output file
+}
+
+if (args.in) { // Check for input file
+    try {
+        styles = require(`../../${args.in}`) as Styles | Callback
+    } catch {
+        try {
+            styles = require(`../${args.in}`) as Styles | Callback
+        } catch {
+            styles = require(`./${args.in}`) as Styles | Callback
+        }
+    }
+} else {
+    throw Error("Missing parameter for input file 👀")
 }
 
 /**
- * @returns {number} 1 if success (like c++), throw an error otherwise
+ * Writes jsonss object to file
+ * @returns {number} 1 if success, throw an error otherwise
  */
 const write = (): number | void => {
-    let output = ""
-    let styles // input file
-
-    if (args.in) { // check for input file
-        try {
-            styles = require("../../" + args.in)
-        } catch {
-            try {
-                styles = require("../" + args.in)
-            } catch {
-                styles = require ("./" + args.in)
-            }
-        }
-    } else {
-        throw "Missing parameter for input file 👀"
-    }
+    let output = "",
+        data: {[key: string]: string | {}}
 
     if (
         !args.out && !(args.out.includes(".css") || args.out.includes(".scss"))
-    ) { // make sure file is valid
-        throw "Missing parameter for output file 👀"
+    ) { // Make sure file is valid
+        throw Error("Missing parameter for output file 👀")
     }
 
-    const data = styles.jsonss() // get data from input file
+    if ((styles as Styles).jsonss) {
+        if (typeof((styles as Styles).jsonss) === "object") {
+            data = (styles as Styles).jsonss as {}
+        } else if (typeof((styles as Styles).jsonss) === "function") {
+            data = ((styles as Styles).jsonss as Callback)() as {}
+        }
+    } else if (styles) {
+        if (typeof(styles) === "object") {
+            data = styles as {}
+        } else if (typeof(styles) === "function") {
+            data = styles() as {}
+        }
+    }
 
-    output += parser(data, pretty, debug, lint) // parse JSON object
+    output += parser(data, pretty, debug, lint) // Parse JSON object
 
     if (pretty) {
         output = output.substr(0, output.length - 1)
     }
 
-    // write output to output file
+    // Write output to output file
     fs.writeFile(
         `./${args.out}`,
         output,
         "utf-8",
-    (err: unknown) => {
-        if (err) {
-            throw err
-        } else {
-            console.log("Done! 😃")
-        }
-    })
-    return 1 // return 1 on sucess
+        (err: unknown) => {
+            if (err) {
+                throw err
+            } else {
+                console.log("Done! 😃")
+            }
+        })
+
+    return 1 // Return 1 on sucess
 }
 
 try {
     const success = write()
+    
     if (success !== 1) {
         console.log("An error occured 😰")
     }
 
-} catch(err) {
+} catch (err) {
     console.log(err)
 }

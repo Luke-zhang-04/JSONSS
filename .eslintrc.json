@@ -101,7 +101,7 @@
         "function-call-argument-newline": "off",
         "function-paren-newline": "off",
         "generator-star-spacing": "error",
-        "global-require": "error",
+        "global-require": "off",
         "grouped-accessor-pairs": "error",
         "guard-for-in": "error",
         "handle-callback-err": "error",
@@ -351,14 +351,9 @@
                     "modifiers": ["private"],
                     "format": ["camelCase"],
                     "leadingUnderscore": "require"
-                },{
+                }, {
                     "selector": "typeLike",
                     "format": ["PascalCase"]
-                }, {
-                    "selector": "variable",
-                    "types": ["boolean"],
-                    "format": ["camelCase"],
-                    "prefix": ["is", "should", "has", "can", "did", "will"]
                 }, {
                     "selector": "parameter",
                     "format": ["camelCase"],

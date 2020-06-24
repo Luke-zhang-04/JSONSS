@@ -26,6 +26,21 @@ JavaScript Object Notated Style Sheets. Created so developers don't need to lear
 ## Usage ##
 JSONSS allows you to use JavaScript loops, functions, and variables, and JSON to create CSS. Just write JavaScript code, and we do the converting and formatting for you.
 
+To export your stylesheet, you can choose any of the two options below
+```js
+// exports.jsonss
+exports.jsonss = myJsonObject // Must be a valid JSON object
+
+// module.exports
+module.exports = myJsonObject // Must be a valid JSON object
+
+// exports.jsonss
+exports.jsonss = myFunction // Function must return a valid JSON object
+
+// module.exports
+module.exports = myFunction // Function must return a valid JSON object
+```
+
 ### Installation ###
 #### NPM ####
 In terminal, type

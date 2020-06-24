@@ -9,6 +9,7 @@
   "scripts": {
     "test": "node . example/example.js example/styles.css -p -d"
   },
+  "module": "es6",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Luke-zhang-04/JSONSS.git"
@@ -31,7 +32,7 @@
   },
   "homepage": "https://github.com/Luke-zhang-04/JSONSS#readme",
   "dependencies": {
-    "@types/node": "^13.13.5",
+    "@types/node": "^14.0.14",
     "commander": "^5.1.0"
   },
   "devDependencies": {
